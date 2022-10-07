@@ -2,9 +2,9 @@ package com.telecom.maze;
 
 import com.telecom.graph.Graph;
 import com.telecom.graph.Vertex;
+import com.telecom.maze.box.AccessibleBox;
 import com.telecom.maze.box.EmptyBox;
 import com.telecom.maze.box.MazeBox;
-import com.telecom.maze.box.WallBox;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -31,11 +31,11 @@ public class Maze implements Graph {
     }
 
     @Override
-    public Set<Vertex> getNeighboursForVertex(Vertex vertex) {
+    public Set<Vertex> getSuccessors(Vertex vertex) {
         Set<Vertex> vertices = new HashSet<>();
 
-        // Checking if vertex is a wall box
-        if (vertex instanceof WallBox) return vertices;
+        // Checking if the box has no neighbours
+        if (!(vertex instanceof AccessibleBox)) return vertices;
 
 
         MazeBox box = (MazeBox) vertex;
@@ -44,22 +44,22 @@ public class Maze implements Graph {
 
         if (boxXPosition > 0) {
             MazeBox neighbourBox = this.tiles[boxYPosition][boxXPosition - 1];
-            if (!(neighbourBox instanceof WallBox)) vertices.add(neighbourBox);
+            if (neighbourBox instanceof AccessibleBox) vertices.add(neighbourBox);
         }
 
         if (boxXPosition < width - 1) {
             MazeBox neighbourBox = this.tiles[boxYPosition][boxXPosition + 1];
-            if (!(neighbourBox instanceof WallBox)) vertices.add(neighbourBox);
+            if (neighbourBox instanceof AccessibleBox) vertices.add(neighbourBox);
         }
 
         if (boxYPosition > 0) {
             MazeBox neighbourBox = this.tiles[boxYPosition - 1][boxXPosition];
-            if (!(neighbourBox instanceof WallBox)) vertices.add(neighbourBox);
+            if (neighbourBox instanceof AccessibleBox) vertices.add(neighbourBox);
         }
 
         if (boxYPosition < height - 1) {
             MazeBox neighbourBox = this.tiles[boxYPosition + 1][boxXPosition];
-            if (!(neighbourBox instanceof WallBox)) vertices.add(neighbourBox);
+            if (neighbourBox instanceof AccessibleBox) vertices.add(neighbourBox);
         }
 
         return vertices;
@@ -79,6 +79,10 @@ public class Maze implements Graph {
 
     @Override
     public int getWeight(Vertex src, Vertex dst) {
+        // Checking that both vertexes are accessible
+        if (!(src instanceof AccessibleBox)) throw new IllegalArgumentException("src is not an AccessibleBox");
+        if (!(dst instanceof AccessibleBox)) throw new IllegalArgumentException("dst is not an AccessibleBox");
+
         // Checking that dst is a neighbour of src
         MazeBox srcBox = (MazeBox) src;
         MazeBox dstBox = (MazeBox) dst;

@@ -8,7 +8,7 @@ public interface Vertex {
      *
      * @return Le nom du sommet
      */
-    String getName();
+    String getLabel();
 
     /**
      * Cette méthode renvoie l'ensemble des sommets auxquels le sommet est connecté.

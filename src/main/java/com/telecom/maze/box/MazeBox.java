@@ -29,12 +29,12 @@ public abstract class MazeBox implements Vertex {
     }
 
     @Override
-    public String getName() {
+    public String getLabel() {
         return String.format("(%d,%d)", this.xPosition, this.yPosition);
     }
 
     @Override
     public Set<Vertex> getSuccessors() {
-        return this.getMaze().getNeighboursForVertex(this);
+        return this.getMaze().getSuccessors(this);
     }
 }

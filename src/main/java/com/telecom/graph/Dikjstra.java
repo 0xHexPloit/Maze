@@ -28,7 +28,7 @@ public class Dikjstra {
             for (Vertex successor: pivotVertex.getSuccessors()) {
                 if (!processedVertexesSet.contains(successor)) {
                     int minDistanceSuccessor = minDistance.getMinDistance(successor);
-                    int distancePivotSuccessor = distance.getDistanceBetween(pivotVertex, successor);
+                    int distancePivotSuccessor = distance.getWeight(pivotVertex, successor);
 
                     if (minDistancePivot + distancePivotSuccessor < minDistanceSuccessor) {
                         minDistance.setMinDistance(
