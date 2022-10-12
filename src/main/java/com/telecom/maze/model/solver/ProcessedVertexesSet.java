@@ -1,4 +1,6 @@
-package com.telecom.graph;
+package com.telecom.maze.model.solver;
+
+import com.telecom.maze.model.graph.Vertex;
 
 public interface ProcessedVertexesSet {
     /**

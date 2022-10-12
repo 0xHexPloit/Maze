@@ -1,4 +1,6 @@
-package com.telecom.graph;
+package com.telecom.maze.model.graph;
+
+import com.telecom.maze.model.graph.Vertex;
 
 public interface Distance {
     /**
@@ -9,5 +11,5 @@ public interface Distance {
      * @param vertexTwo Un sommet du graphe différent de 'vertex one'
      * @return Le poids de l'arrête reliant les deux sommets du graphe.
      */
-    int getWeight(Vertex vertexOne, Vertex vertexTwo);
+    int getEdgeWeight(Vertex vertexOne, Vertex vertexTwo);
 }

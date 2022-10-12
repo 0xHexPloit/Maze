@@ -1,4 +1,4 @@
-package com.telecom.maze.box;
+package com.telecom.maze.model.box;
 
 /**
  * Cette interface permet d'indiquer qu'une boite I n'est pas isolée. Autrement dit si on considère qu'une boite I' à

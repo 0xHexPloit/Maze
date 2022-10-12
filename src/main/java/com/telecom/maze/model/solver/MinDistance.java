@@ -1,4 +1,6 @@
-package com.telecom.graph;
+package com.telecom.maze.model.solver;
+
+import com.telecom.maze.model.graph.Vertex;
 
 import java.util.Set;
 
@@ -22,7 +24,7 @@ public interface MinDistance {
      * Cette méthode permet de récupérer le vertex avec la distance minimale qui n'a pas encore été traité.
      *
      * @param processedVertexesSet L'ensemble des sommets qui ont été
-     * @param vertexes
+     * @param vertexes L'ensemble des sommets du graphe
      *
      * @return Le prochain pivot
      */

@@ -5,16 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82c069d9-de70-4f6e-82ae-346eb6dd167e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/box/AccessibleBox.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/intellij-javadocs-4.0.1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/BaseMazeFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/Maze.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/box/MazeBox.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/solver/BaseMinDistance.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/solver/BaseProcessedVertexesSet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/solver/BaseShortestPath.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/graph/Dikjstra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/graph/Dikjstra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/graph/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/graph/Graph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/graph/Vertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/graph/Vertex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/Maze.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/Maze.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/box/ArrivalBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/box/ArrivalBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/box/DepartureBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/box/DepartureBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/box/EmptyBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/box/EmptyBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/box/MazeBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/box/MazeBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/graph/Dikjstra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/solver/Dikjstra.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/graph/Distance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/graph/Distance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/graph/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/graph/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/graph/MinDistance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/solver/MinDistance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/graph/ProcessedVertexesSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/solver/ProcessedVertexesSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/graph/ShortestPaths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/solver/ShortestPaths.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/graph/Vertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/graph/Vertex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/Maze.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/box/AccessibleBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/box/AccessibleBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/box/ArrivalBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/box/ArrivalBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/box/DepartureBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/box/DepartureBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/box/EmptyBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/box/EmptyBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/box/MazeBox.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/box/WallBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/box/WallBox.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,13 +38,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/telecom/maze/model/Maze.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -41,19 +58,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "run.code.analysis.last.selected.profile": "pProject Default"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/telecom" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.telecom.maze.Main" />
+      <module name="Maze" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -66,6 +107,11 @@
       <workItem from="1665067052289" duration="421000" />
       <workItem from="1665142692654" duration="1286000" />
       <workItem from="1665143989604" duration="407000" />
+      <workItem from="1665144415216" duration="36000" />
+      <workItem from="1665556937049" duration="12414000" />
+      <workItem from="1665574231098" duration="398000" />
+      <workItem from="1665577411362" duration="1549000" />
+      <workItem from="1665590956013" duration="6450000" />
     </task>
     <servers />
   </component>

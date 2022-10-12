@@ -1,4 +1,4 @@
-package com.telecom.graph;
+package com.telecom.maze.model.graph;
 
 import java.util.Set;
 

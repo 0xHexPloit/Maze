@@ -1,14 +1,19 @@
-package com.telecom.graph;
+package com.telecom.maze.model.solver;
+
+import com.telecom.maze.model.graph.Distance;
+import com.telecom.maze.model.graph.Graph;
+import com.telecom.maze.model.graph.Vertex;
 
 public class Dikjstra {
     public static ShortestPaths dijkstra(
-            Graph graph,
-            Vertex startVertex,
-            Vertex endVertex,
-            ProcessedVertexesSet processedVertexesSet,
-            MinDistance minDistance,
-            Distance distance
+            final Graph graph,
+            final Vertex startVertex,
+            final Vertex endVertex,
+            final Distance distance
     ) {
+        ProcessedVertexesSet processedVertexesSet = new BaseProcessedVertexesSet();
+        MinDistance minDistance = new BaseMinDistance();
+
         processedVertexesSet.addVertex(startVertex);
 
         Vertex pivotVertex = startVertex;
@@ -20,7 +25,7 @@ public class Dikjstra {
             }
         }
 
-        ShortestPaths shortestPaths = null;
+        ShortestPaths shortestPaths = new BaseShortestPath();
 
         while (!processedVertexesSet.contains(endVertex)) {
             int minDistancePivot = minDistance.getMinDistance(pivotVertex);
@@ -28,7 +33,7 @@ public class Dikjstra {
             for (Vertex successor: pivotVertex.getSuccessors()) {
                 if (!processedVertexesSet.contains(successor)) {
                     int minDistanceSuccessor = minDistance.getMinDistance(successor);
-                    int distancePivotSuccessor = distance.getWeight(pivotVertex, successor);
+                    int distancePivotSuccessor = distance.getEdgeWeight(pivotVertex, successor);
 
                     if (minDistancePivot + distancePivotSuccessor < minDistanceSuccessor) {
                         minDistance.setMinDistance(
@@ -40,8 +45,9 @@ public class Dikjstra {
                 }
             }
 
-            pivotVertex = minDistance.getMinDistanceVertex(processedVertexesSet, graph.getVertexes());
             processedVertexesSet.addVertex(pivotVertex);
+            pivotVertex = minDistance.getMinDistanceVertex(processedVertexesSet, graph.getVertexes());
+
         }
 
         return shortestPaths;
