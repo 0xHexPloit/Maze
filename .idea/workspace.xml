@@ -5,16 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82c069d9-de70-4f6e-82ae-346eb6dd167e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/BaseMaze.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/BaseMazeFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/BaseMazeFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/BaseMaze.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/BaseMaze.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/Maze.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/Maze.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/box/ArrivalBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/box/ArrivalBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/box/DepartureBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/box/DepartureBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/box/EmptyBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/box/EmptyBox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/box/MazeBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/box/MazeBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/box/WallBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/box/WallBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/graph/Distance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/graph/Distance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/graph/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/graph/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/solver/BaseMinDistance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/solver/BaseMinDistance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/solver/BaseProcessedVertexesSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/solver/BaseProcessedVertexesSet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/solver/BaseShortestPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/solver/BaseShortestPath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/solver/MinDistance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/solver/MinDistance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/solver/ProcessedVertexesSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/solver/ProcessedVertexesSet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/solver/ShortestPaths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/solver/ShortestPaths.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -98,7 +100,7 @@
       <workItem from="1665556937049" duration="12414000" />
       <workItem from="1665574231098" duration="398000" />
       <workItem from="1665577411362" duration="1549000" />
-      <workItem from="1665590956013" duration="7903000" />
+      <workItem from="1665590956013" duration="10049000" />
     </task>
     <servers />
   </component>
@@ -115,5 +117,21 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/telecom/maze/model/BaseMaze.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/telecom/maze/model/BaseMaze.java</url>
+          <line>138</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

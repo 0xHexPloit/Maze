@@ -11,7 +11,7 @@ public abstract class MazeBox implements Vertex, MazeBoxModel {
     private final int xPosition;
     private final int yPosition;
 
-    public MazeBox(BaseMaze maze, int xPosition, int yPosition) {
+    public MazeBox(final BaseMaze maze, int xPosition, int yPosition) {
         this.maze = maze;
         this.xPosition = xPosition;
         this.yPosition = yPosition;

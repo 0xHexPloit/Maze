@@ -8,7 +8,7 @@ public class BaseShortestPath implements ShortestPaths {
     private final Map<Vertex, Vertex> predecessors = new HashMap<>();
 
     @Override
-    public List<Vertex> getShortestPathBetween(Vertex src, Vertex dst) {
+    public List<Vertex> getShortestPathBetween(final Vertex src, final Vertex dst) {
         List<Vertex> path = new LinkedList<>();
         path.add(0, dst);
         boolean srcFound = false;
@@ -30,7 +30,7 @@ public class BaseShortestPath implements ShortestPaths {
     }
 
     @Override
-    public void setPreviousVertexFor(Vertex successor, Vertex predecessor) {
+    public void setPreviousVertexFor(final Vertex successor, final Vertex predecessor) {
         this.predecessors.put(successor, predecessor);
     }
 }

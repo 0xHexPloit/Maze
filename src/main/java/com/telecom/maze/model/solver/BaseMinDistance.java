@@ -10,17 +10,17 @@ import java.util.Set;
 public class BaseMinDistance implements MinDistance {
     private final Map<Vertex, Integer> minDistances = new HashMap<>();
     @Override
-    public int getMinDistance(Vertex vertex) {
+    public int getMinDistance(final Vertex vertex) {
         return this.minDistances.get(vertex);
     }
 
     @Override
-    public void setMinDistance(Vertex vertex, int minimalDistance) {
+    public void setMinDistance(final Vertex vertex, int minimalDistance) {
         this.minDistances.put(vertex, minimalDistance);
     }
 
     @Override
-    public Vertex getMinDistanceVertex(ProcessedVertexesSet processedVertexesSet, Set<Vertex> vertexes) {
+    public Vertex getMinDistanceVertex(final ProcessedVertexesSet processedVertexesSet,final Set<Vertex> vertexes) {
         // First of all, we should sort the vertexes by their distance to the start vertex
         List<Vertex> sortedVertexes = this.minDistances
                 .entrySet()

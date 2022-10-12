@@ -13,7 +13,7 @@ public interface ShortestPaths {
      * @param dst Le sommet d'arrivée
      * @return Une liste de sommets.
      */
-    List<Vertex> getShortestPathBetween(Vertex src, Vertex dst);
+    List<Vertex> getShortestPathBetween(final Vertex src, final Vertex dst);
 
     /**
      * Cette méthode permet de définir le prédecesseur d'un sommet. Cela permettra de construire le plus court chemin
@@ -23,5 +23,5 @@ public interface ShortestPaths {
      * @param predecessor Le dernier sommet permettant de relier 'startVertex' à 'vertex' dans une approche du plus
      *                    court chemin.
      */
-    void setPreviousVertexFor(Vertex successor, Vertex predecessor);
+    void setPreviousVertexFor(final Vertex successor, final Vertex predecessor);
 }

@@ -9,7 +9,7 @@ public interface ProcessedVertexesSet {
      *
      * @param vertex Un sommet d'un graphe.
      */
-    void addVertex(Vertex vertex);
+    void addVertex(final Vertex vertex);
 
 
     /**
@@ -17,5 +17,5 @@ public interface ProcessedVertexesSet {
      * @param vertex Un sommet d'un graphe
      * @return Un booléen indiquant si le sommet vertex a déjà été parcouru ou non
      */
-    boolean contains(Vertex vertex);
+    boolean contains(final Vertex vertex);
 }

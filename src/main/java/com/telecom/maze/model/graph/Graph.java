@@ -10,7 +10,7 @@ public interface Graph extends Distance {
      * @param vertex Un sommet du graphe.
      * @return Une liste de sommets connectés à 'vertex'.
      */
-    Set<Vertex> getSuccessors(Vertex vertex);
+    Set<Vertex> getSuccessors(final Vertex vertex);
 
 
     /**

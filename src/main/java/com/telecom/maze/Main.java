@@ -6,7 +6,7 @@ import com.telecom.maze.ui.MazeEditor;
 
 public class Main {
     public static void main(String[] args) {
-        MazeModel mazeModel = BaseMazeFactory.getInstance().createMazeModel(5, 5);
+        MazeModel mazeModel = BaseMazeFactory.getInstance().createMazeModel(10, 10);
         MazeEditor mazeEditor = new MazeEditor(mazeModel);
     }
 }

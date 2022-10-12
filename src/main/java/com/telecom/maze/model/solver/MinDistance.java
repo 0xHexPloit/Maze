@@ -10,7 +10,7 @@ public interface MinDistance {
      * @param vertex Un sommet du graphe
      * @return La distance minimale entre le sommet 'startVertex' et le sommet 'vertex'
      */
-    int getMinDistance(Vertex vertex);
+    int getMinDistance(final Vertex vertex);
 
     /**
      * Cette méthode permet de définir la distance minimale entre 'startVertex' et 'vertex'.
@@ -18,7 +18,7 @@ public interface MinDistance {
      * @param vertex Un sommet du graphe
      * @param minimalDistance La distance minimale reliant 'startVertex' et 'vertex'.
      */
-    void setMinDistance(Vertex vertex, int minimalDistance);
+    void setMinDistance(final Vertex vertex, int minimalDistance);
 
     /**
      * Cette méthode permet de récupérer le vertex avec la distance minimale qui n'a pas encore été traité.
@@ -29,7 +29,7 @@ public interface MinDistance {
      * @return Le prochain pivot
      */
     Vertex getMinDistanceVertex(
-            ProcessedVertexesSet processedVertexesSet,
-            Set<Vertex> vertexes
+            final ProcessedVertexesSet processedVertexesSet,
+            final Set<Vertex> vertexes
     );
 }

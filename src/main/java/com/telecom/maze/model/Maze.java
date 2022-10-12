@@ -10,7 +10,7 @@ public interface Maze extends Graph, MazeModel {
      * @param yPosition the y position of the box to change
      * @param box the new type of the box
      */
-    public void changeBoxAtPosition(int xPosition, int yPosition, MazeBox box);
+    public void changeBoxAtPosition(int xPosition, int yPosition, final MazeBox box);
 
 
     /**
@@ -19,5 +19,5 @@ public interface Maze extends Graph, MazeModel {
      * @param box the box to check
      * @return true if the box is part of the shortest path, false otherwise
      */
-    public boolean doesMazeBoxBelongsToShortestPath(MazeBox box);
+    public boolean doesMazeBoxBelongsToShortestPath(final MazeBox box);
 }

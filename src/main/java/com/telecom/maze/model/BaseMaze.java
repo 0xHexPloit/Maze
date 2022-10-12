@@ -41,7 +41,7 @@ public class BaseMaze implements Maze {
     }
 
     @Override
-    public Set<Vertex> getSuccessors(Vertex vertex) {
+    public Set<Vertex> getSuccessors(final Vertex vertex) {
         Set<Vertex> vertices = new HashSet<>();
 
         // Checking if the box has no neighbours
@@ -87,7 +87,7 @@ public class BaseMaze implements Maze {
     }
 
     @Override
-    public void changeBoxAtPosition(int xPosition, int yPosition, MazeBox box) {
+    public void changeBoxAtPosition(int xPosition, int yPosition, final MazeBox box) {
             if (xPosition < 0 || xPosition >= width) throw new IllegalArgumentException("xPosition is out of bounds");
             if (yPosition < 0 || yPosition >= height) throw new IllegalArgumentException("yPosition is out of bounds");
 
@@ -96,7 +96,7 @@ public class BaseMaze implements Maze {
     }
 
     @Override
-    public int getEdgeWeight(Vertex src, Vertex dst) {
+    public int getEdgeWeight(final Vertex src, final Vertex dst) {
         // Checking that both vertexes are accessible
         if (!(src instanceof AccessibleBox)) throw new IllegalArgumentException("src is not an AccessibleBox");
         if (!(dst instanceof AccessibleBox)) throw new IllegalArgumentException("dst is not an AccessibleBox");
@@ -142,7 +142,7 @@ public class BaseMaze implements Maze {
 
 
 
-    public boolean doesMazeBoxBelongsToShortestPath(MazeBox box) {
+    public boolean doesMazeBoxBelongsToShortestPath(final MazeBox box) {
         if (this.shortestPaths == null) return false;
 
         MazeBox startBox = this.getFirstBoxVerifyingCondition(MazeBox::isDeparture);
