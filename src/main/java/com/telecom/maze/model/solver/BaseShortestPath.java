@@ -33,9 +33,4 @@ public class BaseShortestPath implements ShortestPaths {
     public void setPreviousVertexFor(Vertex successor, Vertex predecessor) {
         this.predecessors.put(successor, predecessor);
     }
-
-    @Override
-    public void clear() {
-        this.predecessors.clear();
-    }
 }

@@ -1,9 +1,9 @@
 package com.telecom.maze.model.box;
 
-import com.telecom.maze.model.Maze;
+import com.telecom.maze.model.BaseMaze;
 
 public class ArrivalBox extends MazeBox implements AccessibleBox {
-    public ArrivalBox(Maze maze, int xPosition, int yPosition) {
+    public ArrivalBox(BaseMaze maze, int xPosition, int yPosition) {
         super(maze, xPosition, yPosition);
     }
 

@@ -9,7 +9,7 @@ public class BaseMazeFactory implements MazeFactory {
 
     @Override
     public MazeModel createMazeModel(int height, int width) {
-        return new Maze(height, width);
+        return new BaseMaze(height, width);
     }
 
     public static MazeFactory getInstance() {

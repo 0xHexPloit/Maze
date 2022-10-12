@@ -1,9 +1,9 @@
 package com.telecom.maze.model.box;
 
-import com.telecom.maze.model.Maze;
+import com.telecom.maze.model.BaseMaze;
 
 public class WallBox extends MazeBox {
-    public WallBox(Maze maze, int xPosition, int yPosition) {
+    public WallBox(BaseMaze maze, int xPosition, int yPosition) {
         super(maze, xPosition, yPosition);
     }
 

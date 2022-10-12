@@ -24,10 +24,4 @@ public interface ShortestPaths {
      *                    court chemin.
      */
     void setPreviousVertexFor(Vertex successor, Vertex predecessor);
-
-    /**
-     * Cette méthode permet de remettre à zéro les informations de plus court chemin. En d'autres termes,
-     * pour chaque sommet du graphe, on retire son ancien prédecesseur.
-     */
-    void clear();
 }

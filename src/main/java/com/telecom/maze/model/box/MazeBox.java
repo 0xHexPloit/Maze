@@ -1,23 +1,23 @@
 package com.telecom.maze.model.box;
 
-import com.telecom.maze.model.Maze;
+import com.telecom.maze.model.BaseMaze;
 import com.telecom.maze.model.MazeBoxModel;
 import com.telecom.maze.model.graph.Vertex;
 
 import java.util.Set;
 
 public abstract class MazeBox implements Vertex, MazeBoxModel {
-    private final Maze maze;
+    private final BaseMaze maze;
     private final int xPosition;
     private final int yPosition;
 
-    public MazeBox(Maze maze, int xPosition, int yPosition) {
+    public MazeBox(BaseMaze maze, int xPosition, int yPosition) {
         this.maze = maze;
         this.xPosition = xPosition;
         this.yPosition = yPosition;
     }
 
-    public Maze getMaze() {
+    public BaseMaze getMaze() {
         return maze;
     }
 
