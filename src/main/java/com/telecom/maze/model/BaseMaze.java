@@ -9,6 +9,7 @@ import com.telecom.maze.model.graph.Vertex;
 import com.telecom.maze.model.solver.Dikjstra;
 import com.telecom.maze.model.solver.ShortestPaths;
 
+
 import java.util.*;
 import java.util.function.Predicate;
 
@@ -96,10 +97,10 @@ public class BaseMaze implements Maze {
     }
 
     @Override
-    public int getEdgeWeight(final Vertex src, final Vertex dst) {
+    public int getEdgeWeight(final Vertex src, final Vertex dst) throws NotAdjacentVerticesException {
         // Checking that both vertexes are accessible
-        if (!(src instanceof AccessibleBox)) throw new IllegalArgumentException("src is not an AccessibleBox");
-        if (!(dst instanceof AccessibleBox)) throw new IllegalArgumentException("dst is not an AccessibleBox");
+        if (!(src instanceof AccessibleBox)) throw new NotAdjacentVerticesException(src, dst);
+        if (!(dst instanceof AccessibleBox)) throw new NotAdjacentVerticesException(src, dst);
 
         // Checking that dst is a neighbour of src
         MazeBox srcBox = (MazeBox) src;
@@ -113,7 +114,7 @@ public class BaseMaze implements Maze {
 
         // Checking that src and dst are neighbours.
         if (Math.abs(srcXPosition - dstXPosition) > 1 || Math.abs(srcYPosition - dstYPosition) > 1) {
-            throw new IllegalArgumentException("src and dst are not neighbours");
+            throw new NotAdjacentVerticesException(src, dst);
         }
 
         return 1;
@@ -139,8 +140,6 @@ public class BaseMaze implements Maze {
             observer.modelStateChanged();
         }
     }
-
-
 
     public boolean doesMazeBoxBelongsToShortestPath(final MazeBox box) {
         if (this.shortestPaths == null) return false;

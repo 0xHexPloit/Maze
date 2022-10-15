@@ -1,5 +1,6 @@
 package com.telecom.maze.model.solver;
 
+import com.telecom.maze.model.NotAdjacentVerticesException;
 import com.telecom.maze.model.graph.Distance;
 import com.telecom.maze.model.graph.Graph;
 import com.telecom.maze.model.graph.Vertex;
@@ -13,8 +14,6 @@ public class Dikjstra {
     ) {
         ProcessedVertexesSet processedVertexesSet = new BaseProcessedVertexesSet();
         MinDistance minDistance = new BaseMinDistance();
-
-        processedVertexesSet.addVertex(startVertex);
 
         Vertex pivotVertex = startVertex;
         minDistance.setMinDistance(startVertex, 0);
@@ -33,18 +32,21 @@ public class Dikjstra {
             for (Vertex successor: pivotVertex.getSuccessors()) {
                 if (!processedVertexesSet.contains(successor)) {
                     int minDistanceSuccessor = minDistance.getMinDistance(successor);
-                    int distancePivotSuccessor = distance.getEdgeWeight(pivotVertex, successor);
-
-                    if (minDistancePivot + distancePivotSuccessor < minDistanceSuccessor) {
-                        minDistance.setMinDistance(
-                                successor,
-                                minDistancePivot + distancePivotSuccessor
-                        );
-                        shortestPaths.setPreviousVertexFor(successor, pivotVertex);
+                    try{
+                        int distancePivotSuccessor = distance.getEdgeWeight(pivotVertex, successor);
+                        if (minDistancePivot + distancePivotSuccessor < minDistanceSuccessor) {
+                            minDistance.setMinDistance(
+                                    successor,
+                                    minDistancePivot + distancePivotSuccessor
+                            );
+                            shortestPaths.setPreviousVertexFor(successor, pivotVertex);
+                        }
+                    } catch (NotAdjacentVerticesException e) {
+                        // This kind of exception should never happen.
+                        System.exit(1);
                     }
                 }
             }
-
             processedVertexesSet.addVertex(pivotVertex);
             pivotVertex = minDistance.getMinDistanceVertex(processedVertexesSet, graph.getVertexes());
 

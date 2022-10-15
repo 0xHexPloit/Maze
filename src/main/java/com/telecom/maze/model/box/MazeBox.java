@@ -11,10 +11,13 @@ public abstract class MazeBox implements Vertex, MazeBoxModel {
     private final int xPosition;
     private final int yPosition;
 
+    private final String label;
+
     public MazeBox(final BaseMaze maze, int xPosition, int yPosition) {
         this.maze = maze;
         this.xPosition = xPosition;
         this.yPosition = yPosition;
+        this.label = String.format("(%d, %d)", xPosition, yPosition);
     }
 
     public BaseMaze getMaze() {
@@ -31,7 +34,7 @@ public abstract class MazeBox implements Vertex, MazeBoxModel {
 
     @Override
     public String getLabel() {
-        return String.format("(%d,%d)", this.xPosition, this.yPosition);
+        return this.label;
     }
 
     @Override
