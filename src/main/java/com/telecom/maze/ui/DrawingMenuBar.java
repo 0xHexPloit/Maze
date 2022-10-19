@@ -1,6 +1,6 @@
 package com.telecom.maze.ui;
 
-import javax.swing.JMenuBar;
+import javax.swing.*;
 
 @SuppressWarnings("serial") 
 public class DrawingMenuBar extends JMenuBar {

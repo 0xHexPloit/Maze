@@ -1,7 +1,6 @@
 package com.telecom.maze.ui;
 
-import javax.swing.JMenu
-;
+import javax.swing.*;
 
 @SuppressWarnings("serial") 
 public class MazeMenu extends JMenu {

@@ -1,14 +1,10 @@
 package com.telecom.maze.ui;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-
-import javax.swing.JPanel;
-import javax.swing.border.MatteBorder;
-
 import com.telecom.maze.model.MazeModel;
+
+import javax.swing.*;
+import javax.swing.border.MatteBorder;
+import java.awt.*;
 
 @SuppressWarnings("serial") 
 public class MazePanel extends JPanel {

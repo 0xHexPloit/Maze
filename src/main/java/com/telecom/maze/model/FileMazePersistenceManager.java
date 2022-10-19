@@ -1,21 +1,18 @@
 package com.telecom.maze.model;
 
-import java.awt.Component;
-import java.io.File;
-import java.io.IOException;
+import com.telecom.maze.model.box.ArrivalBox;
+import com.telecom.maze.model.box.DepartureBox;
+import com.telecom.maze.model.box.WallBox;
+
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.*;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileNameExtensionFilter;
-
-import com.telecom.maze.model.MazeModel;
-import com.telecom.maze.model.MazePersistenceManager;
-import com.telecom.maze.model.box.ArrivalBox;
-import com.telecom.maze.model.box.DepartureBox;
-import com.telecom.maze.model.box.WallBox;
 
 public class FileMazePersistenceManager implements MazePersistenceManager {
 	
@@ -32,8 +29,25 @@ public class FileMazePersistenceManager implements MazePersistenceManager {
 		this.editor = null;
 		filter = new FileNameExtensionFilter( "Maze files only (*.maze)", "maze" );
 	}
-	
-	public void setEditor( Component editor ) {
+
+
+	public char getDepartureBoxRepresentation() {
+		return BOX_DEPARTURE;
+	}
+
+	public char getArrivalBoxRepresentation() {
+		return BOX_ARRIVAL;
+	}
+
+	public char getWallBoxRepresentation() {
+		return BOX_WALL;
+	}
+
+	public char getEmptyBoxRepresentation() {
+		return BOX_EMPTY;
+	}
+
+	public void setEditor(Component editor ) {
 		this.editor = editor;
 	}
 	
@@ -75,6 +89,9 @@ public class FileMazePersistenceManager implements MazePersistenceManager {
 				numberRows,
 				numberColumns
 		);
+
+		// Setting the id of the maze
+		maze.setId( mazeId );
 
 		for (int rowIndex = 0; rowIndex < numberRows; rowIndex++) {
 			String line = lines.get(rowIndex);
@@ -122,8 +139,7 @@ public class FileMazePersistenceManager implements MazePersistenceManager {
 	}
 
 	@Override
-	public void persist( final MazeModel mazeModel )
-	throws IOException {
+	public void persist( final MazeModel mazeModel ) throws IOException {
 		String mazeId = mazeModel.getId();
 		
 		if ( mazeId == null || mazeId.isEmpty() ) {
@@ -139,14 +155,36 @@ public class FileMazePersistenceManager implements MazePersistenceManager {
 		doPersist( mazeModel );
 	}
 		
-	protected void doPersist( final MazeModel mazeModel )
-	throws IOException {
-		// TODO: Implement
+	protected void doPersist( final MazeModel mazeModel ) throws IOException {
+		// Define the path where the file will be saved
+		Path path = Paths.get(mazeModel.getId());
+
+		try (
+				FileWriter writer = new FileWriter(path.toFile(), StandardCharsets.UTF_8);
+				BufferedWriter buffWriter = new BufferedWriter(writer);
+				PrintWriter printWriter = new PrintWriter(buffWriter);
+		) {
+			for (int rowIndex = 0; rowIndex < mazeModel.getHeigth(); rowIndex++) {
+				for (int columnIndex = 0; columnIndex < mazeModel.getWidth(); columnIndex++) {
+					MazeBoxModel box = mazeModel.getMazeBox(columnIndex, rowIndex);
+					if (box instanceof DepartureBox) {
+						printWriter.print(BOX_DEPARTURE);
+					} else if (box instanceof ArrivalBox) {
+						printWriter.print(BOX_ARRIVAL);
+					} else if (box instanceof WallBox) {
+						printWriter.print(BOX_WALL);
+					} else {
+						printWriter.print(BOX_EMPTY);
+					}
+				}
+				printWriter.println();
+			}
+		}
 	}
 
 	@Override
 	public boolean delete(MazeModel mazeModel)  throws IOException {
-		return new File( mazeModel.getId() ).delete();
+		return Files.deleteIfExists(Paths.get( mazeModel.getId()));
 	}
 
 	private String newMazeId() {

@@ -1,12 +1,10 @@
 package com.telecom.maze.ui;
 
-import javax.swing.JPanel;
-
 import com.telecom.maze.model.MazeBoxModel;
 import com.telecom.maze.model.MazeModel;
 
-import java.awt.Color;
-import java.awt.Dimension;
+import javax.swing.*;
+import java.awt.*;
 
 @SuppressWarnings("serial") 
 public class BoxPanel extends JPanel {

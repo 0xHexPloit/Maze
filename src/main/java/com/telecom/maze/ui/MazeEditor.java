@@ -1,16 +1,14 @@
 package com.telecom.maze.ui;
 
+import com.telecom.maze.model.MazeModel;
+import com.telecom.maze.model.MazePersistenceManager;
+import com.telecom.maze.model.ModelObserver;
+
+import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.util.List;
-
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-
-import com.telecom.maze.model.MazeModel;
-import com.telecom.maze.model.MazePersistenceManager;
-import com.telecom.maze.model.ModelObserver;
 
 @SuppressWarnings("serial") 
 public class MazeEditor extends JFrame implements ModelObserver {

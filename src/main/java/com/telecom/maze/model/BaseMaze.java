@@ -1,16 +1,9 @@
 package com.telecom.maze.model;
 
-import java.util.UUID;
-
-import com.telecom.maze.model.box.ArrivalBox;
-import com.telecom.maze.model.box.DepartureBox;
-import com.telecom.maze.model.box.EmptyBox;
-import com.telecom.maze.model.box.MazeBox;
-import com.telecom.maze.model.box.AccessibleBox;
+import com.telecom.maze.model.box.*;
 import com.telecom.maze.model.graph.Vertex;
 import com.telecom.maze.model.solver.Dikjstra;
 import com.telecom.maze.model.solver.ShortestPaths;
-
 
 import java.util.*;
 import java.util.function.Predicate;

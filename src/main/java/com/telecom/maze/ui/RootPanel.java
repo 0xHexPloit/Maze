@@ -1,9 +1,7 @@
 package com.telecom.maze.ui;
 
-import java.awt.BorderLayout;
-
-
-import javax.swing.JPanel;
+import javax.swing.*;
+import java.awt.*;
 
 @SuppressWarnings("serial") 
 public class RootPanel extends JPanel {

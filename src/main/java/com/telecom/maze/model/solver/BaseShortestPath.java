@@ -2,7 +2,10 @@ package com.telecom.maze.model.solver;
 
 import com.telecom.maze.model.graph.Vertex;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 public class BaseShortestPath implements ShortestPaths {
     private final Map<Vertex, Vertex> predecessors = new HashMap<>();

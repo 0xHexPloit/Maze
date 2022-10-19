@@ -1,12 +1,7 @@
 package com.telecom.maze.ui;
 
-import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
-import javax.swing.Box;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-
-import java.awt.Dimension;
+import javax.swing.*;
+import java.awt.*;
 
 @SuppressWarnings("serial") 
 public class ChooserButtonGroup extends JPanel {

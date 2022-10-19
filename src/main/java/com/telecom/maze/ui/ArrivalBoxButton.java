@@ -1,8 +1,8 @@
 package com.telecom.maze.ui;
 
-import java.awt.event.ActionListener;
-
 import com.telecom.maze.model.MazeBoxModel;
+
+import java.awt.event.ActionListener;
 
 @SuppressWarnings("serial") 
 public class ArrivalBoxButton extends AbstractBoxTypeRadioButton implements ActionListener {

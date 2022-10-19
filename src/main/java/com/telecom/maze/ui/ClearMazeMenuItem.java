@@ -1,9 +1,8 @@
 package com.telecom.maze.ui;
 
-import javax.swing.JMenuItem;
-
-import java.awt.event.ActionListener;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 @SuppressWarnings("serial") 
 public class ClearMazeMenuItem extends JMenuItem implements ActionListener {

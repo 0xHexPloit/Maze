@@ -1,6 +1,5 @@
 package com.telecom.maze.model.box;
 
-import com.telecom.maze.model.BaseMaze;
 import com.telecom.maze.model.Maze;
 import com.telecom.maze.model.MazeBoxModel;
 import com.telecom.maze.model.graph.Vertex;

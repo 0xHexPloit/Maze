@@ -1,10 +1,9 @@
 package com.telecom.maze.ui;
 
 
-import javax.swing.JButton;
-
-import java.awt.event.ActionListener;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 @SuppressWarnings("serial") 
 public class ClearShortestPathButton extends JButton implements ActionListener {

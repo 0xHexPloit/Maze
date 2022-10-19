@@ -1,8 +1,7 @@
 package com.telecom.maze.ui;
 
+import javax.swing.*;
 import java.awt.event.ActionListener;
-
-import javax.swing.JMenuItem;
 
 @SuppressWarnings("serial") 
 public abstract class SaveMenuItemAbstract extends JMenuItem implements ActionListener {
