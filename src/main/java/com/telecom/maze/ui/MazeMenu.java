@@ -1,12 +1,7 @@
 package com.telecom.maze.ui;
 
-import javax.swing.JMenu
-;
-/**
- * This menu manages everything that has to do with the creation of mazes directly in the application.
- * @author Idris DELSOL
- *
- */
+import javax.swing.*;
+
 @SuppressWarnings("serial") 
 public class MazeMenu extends JMenu {
 

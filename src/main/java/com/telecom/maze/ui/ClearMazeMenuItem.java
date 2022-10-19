@@ -1,15 +1,9 @@
 package com.telecom.maze.ui;
 
-import javax.swing.JMenuItem;
-
-import java.awt.event.ActionListener;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-/**
- * This item shall enable the user to set the type of all the boxes of the maze to EBox
- * @author Idris DELSOL
- *
- */
 @SuppressWarnings("serial") 
 public class ClearMazeMenuItem extends JMenuItem implements ActionListener {
 

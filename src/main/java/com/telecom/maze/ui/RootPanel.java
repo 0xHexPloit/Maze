@@ -1,15 +1,8 @@
 package com.telecom.maze.ui;
 
-import java.awt.BorderLayout;
+import javax.swing.*;
+import java.awt.*;
 
-
-import javax.swing.JPanel;
-
-/**
- * This panel will contain all the other panels used in the app.
- * @author Idris DELSOL
- *
- */
 @SuppressWarnings("serial") 
 public class RootPanel extends JPanel {
 	

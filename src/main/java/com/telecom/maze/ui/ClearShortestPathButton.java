@@ -1,16 +1,10 @@
 package com.telecom.maze.ui;
 
 
-import javax.swing.JButton;
-
-import java.awt.event.ActionListener;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-/**
- * This button clears the shortest path given by the Dijkstra algorithm.
- * @author Idris DELSOL
- *
- */
 @SuppressWarnings("serial") 
 public class ClearShortestPathButton extends JButton implements ActionListener {
 	

@@ -90,4 +90,16 @@ public interface MazeModel {
 	 * @return A list of error messages for each invalid property of this maze. <code>null</code> or an empty list if this maze is valid.
 	 */
 	List<String> validate();
+
+	/**
+	 * Cette méthode permet d'obtenir l'identifient du labyrinthe
+	 * @return L'identifiant du labyrinthe.
+	 */
+	String getId();
+
+	/**
+	 * Cette méthode permet de rédéfinir l'identifiant du labyrinthe.
+	 * @param mazeId Le nouveau identifiant du labyrinthe.
+	 */
+	void setId(String mazeId);
 }

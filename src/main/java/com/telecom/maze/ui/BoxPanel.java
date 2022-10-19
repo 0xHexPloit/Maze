@@ -1,55 +1,44 @@
 package com.telecom.maze.ui;
 
-
-import javax.swing.JPanel;
-
 import com.telecom.maze.model.MazeBoxModel;
 import com.telecom.maze.model.MazeModel;
 
-import java.awt.Color;
-import java.awt.Dimension;
+import javax.swing.*;
+import java.awt.*;
 
-/**
- * Each box have its own JPanel to control them easily
- * @author Idris DELSOL
- *
- */
-@SuppressWarnings("serial")
+@SuppressWarnings("serial") 
 public class BoxPanel extends JPanel {
 
-    private final MazeModel mazeModel;
-    private final int rowIdx;
-    private final int colIdx;
-	private MazeBoxModel boxModel;
-
-	public BoxPanel(
-            final MazeModel mazeModel,
-            final MazeBoxModel boxModel,
-            int rowIdx,
-            int colIdx
-    ) {
-		this.boxModel= boxModel;
-        this.mazeModel = mazeModel;
-        this.rowIdx = rowIdx;
-        this.colIdx = colIdx;
-
+	private final MazeModel mazeModel;
+	private final int rowIndex;
+	private final int colIndex;
+	
+	public BoxPanel( 	final MazeModel mazeModel,
+						final int rowIndex,
+						final int colIndex ) {
+		this.mazeModel = mazeModel;
+		this.rowIndex= rowIndex; 
+		this.colIndex= colIndex; 
 		setBackground( getBoxColor() );
+		
 		addMouseListener( new BoxMouseAdapter( this ) );
 	}
-
+	
 	protected MazePanel getMazePanel() {
 		return (MazePanel) getParent();
 	}
 
 	private Color getBoxColor() {
+		final MazeBoxModel boxModel = getMazeBox();
+		
 		if ( boxModel == null ) {
 			return Color.WHITE;
 		}
-
+		
 		if ( boxModel.isWall() ) {
 			return Color.BLACK;
 		}
-
+		
 		if ( boxModel.isDeparture() ) {
 			return Color.GREEN;
 		}
@@ -57,10 +46,10 @@ public class BoxPanel extends JPanel {
 		if ( boxModel.isArrival() ) {
 			return Color.RED;
 		}
-
+		
 		if ( boxModel.isEmpty() ) {
 			final MazePanel mazePanel = getMazePanel();
-
+			
 			if ( mazePanel == null || mazePanel.isEditing() || !boxModel.belongsToShortestPath() ) {
 				return Color.WHITE;
 			}
@@ -72,11 +61,15 @@ public class BoxPanel extends JPanel {
 
 		throw new IllegalStateException( "Unable to determine color for box '" + boxModel + "'!" );
 	}
-
+	
 	public MazeBoxModel getMazeBox() {
-		return boxModel;
+		if ( mazeModel == null ) {
+			return null;
+		}
+		
+		return mazeModel.getMazeBox(rowIndex, colIndex);
 	}
-
+	
 	@Override
 	public Dimension getPreferredSize() {
 		final MazePanel mazePanel = getMazePanel();
@@ -88,22 +81,20 @@ public class BoxPanel extends JPanel {
 	public Dimension getMinimumSize() {
 		return new Dimension(10, 10);
 	}
-
-	@Override
+	
+	@Override 
 	public Dimension getMaximumSize() {
 		return new Dimension(100, 100);
 	}
-
+	
 	public void notifyForUpdate() {
-        // Ensuring that the mazeBox used is uptodate
-        this.boxModel = this.mazeModel.getMazeBox(rowIdx, colIdx);
 		repaint();
 	}
 
 	@Override
     public void repaint() {
 		setBackground( getBoxColor() );
-
+		
 		super.repaint();
 	}
 }

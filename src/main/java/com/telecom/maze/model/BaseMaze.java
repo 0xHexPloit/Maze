@@ -1,14 +1,9 @@
 package com.telecom.maze.model;
 
-import com.telecom.maze.model.box.ArrivalBox;
-import com.telecom.maze.model.box.DepartureBox;
-import com.telecom.maze.model.box.EmptyBox;
-import com.telecom.maze.model.box.MazeBox;
-import com.telecom.maze.model.box.AccessibleBox;
+import com.telecom.maze.model.box.*;
 import com.telecom.maze.model.graph.Vertex;
 import com.telecom.maze.model.solver.Dikjstra;
 import com.telecom.maze.model.solver.ShortestPaths;
-
 
 import java.util.*;
 import java.util.function.Predicate;
@@ -22,12 +17,15 @@ public class BaseMaze implements Maze {
 
     private ShortestPaths shortestPaths;
 
+    private String id;
+
     public BaseMaze(int height, int width) {
         this.height = height;
         this.width = width;
         this.tiles = new MazeBox[height][width];
         this.observers = new HashSet<>();
         this.shortestPaths = null;
+        this.id = "MAZE_" + UUID.randomUUID();
         this.fillTilesWithEmptyBoxes();
     }
 
@@ -39,6 +37,17 @@ public class BaseMaze implements Maze {
         }
         // Notify observers that the maze has changed.
         this.notifyObservers();
+    }
+
+
+    @Override
+    public String getId() {
+        return this.id;
+    }
+
+    @Override
+    public void setId(String mazeId) {
+        this.id = mazeId;
     }
 
     @Override

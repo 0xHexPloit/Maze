@@ -1,18 +1,22 @@
 package com.telecom.maze.ui;
 
-import javax.swing.JMenuBar;
-/**
- * The menu bar of the application
- * @author Idris DELSOL
- *
- */
+import javax.swing.*;
+
 @SuppressWarnings("serial") 
 public class DrawingMenuBar extends JMenuBar {
 	
-	public DrawingMenuBar(MazeEditor drawingMaze) {
+	private final FileMenu fileMenu;
+	
+	public DrawingMenuBar( MazeEditor mazeEditor) {
 		super();
 		
-		add( new FileMenu(drawingMaze) );
-		add( new MazeMenu(drawingMaze) );
+		fileMenu = new FileMenu( mazeEditor );
+		add( fileMenu );
+		
+		add( new MazeMenu( mazeEditor ) );
+	}
+	
+	public void notifyForUpdate() {
+		fileMenu.notifyForUpdate();
 	}
 }
