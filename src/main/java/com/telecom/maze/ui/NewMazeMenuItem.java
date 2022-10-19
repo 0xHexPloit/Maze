@@ -5,12 +5,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JMenuItem;
 
-/**
- * This menu item shall enable the user to generate a new maze. 
- * The user will have to prompt the dimensions of the maze in a dialogue box
- * @author Idris DELSOL
- *
- */
 @SuppressWarnings("serial") 
 public class NewMazeMenuItem extends JMenuItem implements ActionListener {
 

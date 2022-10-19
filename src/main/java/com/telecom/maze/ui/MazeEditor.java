@@ -2,26 +2,31 @@ package com.telecom.maze.ui;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
 import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import com.telecom.maze.model.MazeModel;
+import com.telecom.maze.model.MazePersistenceManager;
 import com.telecom.maze.model.ModelObserver;
 
 @SuppressWarnings("serial") 
 public class MazeEditor extends JFrame implements ModelObserver {
 	
-	private static final String Iterator = null;
 	private MazeModel maze;
+	
+	private final MazePersistenceManager persistenceManager;
+
 	private RootPanel rootPanel;
 	
 	private boolean modified;
 	
 	private boolean editing;
 
-	public MazeEditor(final MazeModel maze ) {
+	public MazeEditor(	final MazeModel maze,
+						final MazePersistenceManager persistenceManager ) {
 		super("Maze Editor");
 		
 		//Window menu bar creation
@@ -41,6 +46,7 @@ public class MazeEditor extends JFrame implements ModelObserver {
 		
 		//By default, the maze drawn when the user access the app will have a 10*10 grid
 		setMaze( maze );
+		this.persistenceManager = persistenceManager;
 		setModified( false );
 		setEditing( false );
 		
@@ -68,6 +74,13 @@ public class MazeEditor extends JFrame implements ModelObserver {
 	@Override
 	public final void modelStateChanged() {
 		rootPanel.notifyForUpdate();
+		
+		getJMenuBar().notifyForUpdate();
+	}
+	
+	@Override
+    public DrawingMenuBar getJMenuBar() {
+		return (DrawingMenuBar) super.getJMenuBar();
 	}
 
 	public final void newMaze() {
@@ -97,6 +110,10 @@ public class MazeEditor extends JFrame implements ModelObserver {
 	public final MazeModel getMaze() {
 		return maze;
 	}
+	
+	public final MazePersistenceManager getPersistenceManager() {
+		return persistenceManager;
+	}
 
 	public RootPanel getRootPanel() {
 		return rootPanel;
@@ -115,6 +132,8 @@ public class MazeEditor extends JFrame implements ModelObserver {
 			switch (response) {
 				case JOptionPane.CANCEL_OPTION :
 					return false;
+				case JOptionPane.YES_OPTION:
+					persistMaze();
 			}
 		}
 		
@@ -163,5 +182,50 @@ public class MazeEditor extends JFrame implements ModelObserver {
 				
 			}
 		}
+	}
+	
+	protected void persistAsMaze() {
+		final MazeModel maze = getMaze();
+		final String currentId = maze.getId();
+		
+		maze.setId( null );
+		
+		try {
+			doPersistMaze();
+		}
+		catch ( final IOException ex ) {
+			handleException( ex );
+
+			maze.setId( currentId );
+		}
+	}
+	
+	private void handleException( final Exception ex ) {
+		JOptionPane.showMessageDialog( this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE );
+	}
+
+	protected void readMaze() {
+		try {
+			setMaze( getPersistenceManager().read( null ) );
+		}
+		catch ( final IOException ex ) {
+			handleException( ex );
+		}
+	}
+	
+	protected void persistMaze() {
+		try {
+			doPersistMaze();
+		}
+		catch ( final IOException ex ) {
+			handleException( ex );
+		}
+	}
+
+	private void doPersistMaze() 
+	throws IOException {
+		final MazePersistenceManager persistenceManager = getPersistenceManager();
+		
+		persistenceManager.persist( getMaze() );
 	}
 }

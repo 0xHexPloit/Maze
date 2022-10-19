@@ -6,11 +6,6 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-/**
- * This button clears the shortest path given by the Dijkstra algorithm.
- * @author Idris DELSOL
- *
- */
 @SuppressWarnings("serial") 
 public class ClearShortestPathButton extends JButton implements ActionListener {
 	

@@ -8,7 +8,7 @@ import javax.swing.JButton;
 @SuppressWarnings("serial") 
 public class SolveMazeButton extends JButton implements ActionListener {
 	
-	private final MazeEditor mazeEditor;
+	private MazeEditor mazeEditor;
 	
 	public SolveMazeButton(MazeEditor mazeEditor) {
 		super("Solve Maze");

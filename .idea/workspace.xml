@@ -5,13 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82c069d9-de70-4f6e-82ae-346eb6dd167e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/NotAdjacentVerticesException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/MazePersistenceManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/MazeReadingException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/telecom/maze/model/FileMazePersistenceManagerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/mazeCorrect.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/mazeEmpty.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/mazeInvalidColumn.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/mazeNotSameColumnNumbers.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/BaseMaze.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/BaseMaze.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/MazeModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/MazeModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/box/ArrivalBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/box/ArrivalBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/box/DepartureBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/box/DepartureBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/box/EmptyBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/box/EmptyBox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/box/MazeBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/box/MazeBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/graph/Distance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/graph/Distance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/solver/Dikjstra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/solver/Dikjstra.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/box/WallBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/model/box/WallBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/ArrivalBoxButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/ArrivalBoxButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/BoxPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/BoxPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/ChooserButtonGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/ChooserButtonGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/ClearMazeMenuItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/ClearMazeMenuItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/ClearShortestPathButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/ClearShortestPathButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/DepartureBoxButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/DepartureBoxButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/DrawingMenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/DrawingMenuBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/EmptyBoxButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/EmptyBoxButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/FileMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/FileMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/InformationMazeMenuItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/InformationMazeMenuItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/MazeEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/MazeEditor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/MazeMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/MazeMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/MazePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/MazePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/NewMazeMenuItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/NewMazeMenuItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/OpenFileMenuItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/OpenFileMenuItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/RootPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/RootPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/SaveAsMenuItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/SaveAsMenuItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/SaveMenuItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/SaveMenuItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/SolveMazeButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/SolveMazeButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/WallBoxButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/telecom/maze/ui/WallBoxButton.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +53,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -47,6 +78,9 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit4&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4&quot;: &quot;&quot;,
+    &quot;last_directory_selection&quot;: &quot;/Users/hugopeyron/Programming/Telecom/Java/Maze/src/test/java&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/hugopeyron/Programming/Telecom/Java/Maze&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -64,18 +98,104 @@
       <recent name="$PROJECT_DIR$/src/main/java" />
       <recent name="$PROJECT_DIR$/src/main/java/com/telecom" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.telecom.maze.model" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.telecom.maze.model" />
+    </key>
   </component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.telecom.maze.Main" />
+  <component name="RunManager" selected="JUnit.FileMazePersistenceManagerTest.doReadInvalidFileNotExisting">
+    <configuration name="FileMazePersistenceManagerTest.doReadCorrectly" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Maze" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.telecom.maze.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.telecom.maze.model" />
+      <option name="MAIN_CLASS_NAME" value="com.telecom.maze.model.FileMazePersistenceManagerTest" />
+      <option name="METHOD_NAME" value="doReadCorrectly" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FileMazePersistenceManagerTest.doReadInvalidColumnIncorrect" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Maze" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.telecom.maze.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.telecom.maze.model" />
+      <option name="MAIN_CLASS_NAME" value="com.telecom.maze.model.FileMazePersistenceManagerTest" />
+      <option name="METHOD_NAME" value="doReadInvalidColumnIncorrect" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FileMazePersistenceManagerTest.doReadInvalidFileEmpty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Maze" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.telecom.maze.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.telecom.maze.model" />
+      <option name="MAIN_CLASS_NAME" value="com.telecom.maze.model.FileMazePersistenceManagerTest" />
+      <option name="METHOD_NAME" value="doReadInvalidFileEmpty" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FileMazePersistenceManagerTest.doReadInvalidFileNotExisting" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Maze" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.telecom.maze.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.telecom.maze.model" />
+      <option name="MAIN_CLASS_NAME" value="com.telecom.maze.model.FileMazePersistenceManagerTest" />
+      <option name="METHOD_NAME" value="doReadInvalidFileNotExisting" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FileMazePersistenceManagerTest.doReadInvalidNotSameColumnNumbers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Maze" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.telecom.maze.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.telecom.maze.model" />
+      <option name="MAIN_CLASS_NAME" value="com.telecom.maze.model.FileMazePersistenceManagerTest" />
+      <option name="METHOD_NAME" value="doReadInvalidNotSameColumnNumbers" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.FileMazePersistenceManagerTest.doReadInvalidFileNotExisting" />
+        <item itemvalue="JUnit.FileMazePersistenceManagerTest.doReadInvalidColumnIncorrect" />
+        <item itemvalue="JUnit.FileMazePersistenceManagerTest.doReadInvalidNotSameColumnNumbers" />
+        <item itemvalue="JUnit.FileMazePersistenceManagerTest.doReadInvalidFileEmpty" />
+        <item itemvalue="JUnit.FileMazePersistenceManagerTest.doReadCorrectly" />
       </list>
     </recent_temporary>
   </component>
@@ -101,7 +221,11 @@
       <workItem from="1665762347628" duration="527000" />
       <workItem from="1665764035354" duration="1850000" />
       <workItem from="1665767555198" duration="1278000" />
-      <workItem from="1665832220124" duration="627000" />
+      <workItem from="1665832220124" duration="821000" />
+      <workItem from="1666160992393" duration="47000" />
+      <workItem from="1666161686724" duration="3469000" />
+      <workItem from="1666168524546" duration="6693000" />
+      <workItem from="1666178903138" duration="419000" />
     </task>
     <servers />
   </component>
@@ -124,7 +248,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/telecom/maze/model/box/MazeBox.java</url>
-          <line>105</line>
+          <line>106</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>

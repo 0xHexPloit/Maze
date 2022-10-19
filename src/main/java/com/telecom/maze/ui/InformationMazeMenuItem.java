@@ -6,11 +6,6 @@ import javax.swing.JOptionPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-/**
- * Menu item that shows useful informations on the current maze.
- * @author Idris DELSOL
- *
- */
 @SuppressWarnings("serial") 
 public class InformationMazeMenuItem extends JMenuItem implements ActionListener {
 	

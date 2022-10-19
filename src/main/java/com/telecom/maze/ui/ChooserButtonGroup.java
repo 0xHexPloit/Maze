@@ -8,11 +8,6 @@ import javax.swing.JRadioButton;
 
 import java.awt.Dimension;
 
-/**
- * In this panel, we will print the buttons to choose which type of box to put in the maze, to run the Dijkstra algorithm and to clear the solution path
- * @author Idris DELSOL
- *
- */
 @SuppressWarnings("serial") 
 public class ChooserButtonGroup extends JPanel {
 	
