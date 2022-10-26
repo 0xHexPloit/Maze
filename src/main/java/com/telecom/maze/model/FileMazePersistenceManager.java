@@ -166,7 +166,7 @@ public class FileMazePersistenceManager implements MazePersistenceManager {
 		) {
 			for (int rowIndex = 0; rowIndex < mazeModel.getHeigth(); rowIndex++) {
 				for (int columnIndex = 0; columnIndex < mazeModel.getWidth(); columnIndex++) {
-					MazeBoxModel box = mazeModel.getMazeBox(columnIndex, rowIndex);
+					MazeBoxModel box = mazeModel.getMazeBox(rowIndex, columnIndex);
 					if (box instanceof DepartureBox) {
 						printWriter.print(BOX_DEPARTURE);
 					} else if (box instanceof ArrivalBox) {

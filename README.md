@@ -9,7 +9,13 @@ Certain part of the project required to test the code.
 To do so, the `JUNIT` library (version 5) was used. It's one of the
 depencies of the project. 
 
-If you have `maven` installed, you can run the tests with the
+If you have `maven` installed, you can run the program with
+the following command:
+
+    mvn clean test
+
+
+the tests with the
 following command:
 
     mvn test

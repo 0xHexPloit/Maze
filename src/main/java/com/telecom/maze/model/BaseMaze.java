@@ -2,7 +2,7 @@ package com.telecom.maze.model;
 
 import com.telecom.maze.model.box.*;
 import com.telecom.maze.model.graph.Vertex;
-import com.telecom.maze.model.solver.Dikjstra;
+import com.telecom.maze.model.solver.Dijkstra;
 import com.telecom.maze.model.solver.ShortestPaths;
 
 import java.util.*;
@@ -25,7 +25,7 @@ public class BaseMaze implements Maze {
         this.tiles = new MazeBox[height][width];
         this.observers = new HashSet<>();
         this.shortestPaths = null;
-        this.id = "MAZE_" + UUID.randomUUID();
+        this.id = "";
         this.fillTilesWithEmptyBoxes();
     }
 
@@ -83,6 +83,15 @@ public class BaseMaze implements Maze {
         }
 
         return vertices;
+    }
+
+    @Override
+    public Vertex getVertex(String label) {
+            Set<Vertex> vertices = this.getVertexes();
+            for (Vertex vertex : vertices) {
+                if (vertex.getLabel().equals(label)) return vertex;
+            }
+            return null;
     }
 
     @Override
@@ -187,7 +196,7 @@ public class BaseMaze implements Maze {
 
     @Override
     public MazeBoxModel getMazeBox(int rowIndex, int colIndex) {
-        return (MazeBoxModel) this.tiles[rowIndex][colIndex];
+        return this.tiles[rowIndex][colIndex];
     }
 
     @Override
@@ -212,7 +221,7 @@ public class BaseMaze implements Maze {
         MazeBox startBox = this.getFirstBoxVerifyingCondition(box -> box instanceof DepartureBox);
         MazeBox endBox = this.getFirstBoxVerifyingCondition(box -> box instanceof ArrivalBox);
 
-        this.shortestPaths = Dikjstra.dijkstra(
+        this.shortestPaths = Dijkstra.dijkstra(
                 this,
                 startBox,
                 endBox,
@@ -229,17 +238,12 @@ public class BaseMaze implements Maze {
         // Getting the number of departure boxes
         int numberOfDepartureBoxes = this.countingNumberBoxesVerifyingCondition(MazeBox::isDeparture);
 
-        if (numberOfDepartureBoxes != 1) {
-            errors.add("The number of departure boxes is not equal to 1\n");
-        }
+        if (numberOfDepartureBoxes != 1) errors.add("The number of departure boxes is not equal to 1\n");
 
         // Getting the number of arrival boxes
         int numberOfArrivalBoxes = this.countingNumberBoxesVerifyingCondition(MazeBox::isArrival);
 
-        if (numberOfArrivalBoxes != 1) {
-            errors.add("The number of arrival boxes is not equal to 1\n");
-        }
-
+        if (numberOfArrivalBoxes != 1) errors.add("The number of arrival boxes is not equal to 1\n");
 
         return errors;
     }

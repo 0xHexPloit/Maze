@@ -100,8 +100,8 @@ public class FileMazePersistenceManagerTest {
     class PersistTest {
         @Test
         void doPersistValid() {
-            int numberRows = 2;
-            int numberColumns = 2;
+            int numberRows = 3;
+            int numberColumns = 3;
 
             Path filePath = Paths.get("src", "test", "resources", "labyrinthe2.maze");
             BaseMaze maze = (BaseMaze) factory.createMazeModel(numberRows, numberRows);
@@ -112,6 +112,7 @@ public class FileMazePersistenceManagerTest {
             int[] departureBoxPosition = {0, 0};
             int[] arrivalBoxPosition = {1, 1};
             int[] wallBoxPosition = {1, 0};
+            int[] wallBoxTwoPosition = {2, 0};
             int[] emptyBoxPosition = {0, 1};
 
             maze.changeBoxAtPosition(
@@ -129,6 +130,11 @@ public class FileMazePersistenceManagerTest {
                     wallBoxPosition[1],
                     new WallBox(maze, wallBoxPosition[0], wallBoxPosition[1])
             );
+            maze.changeBoxAtPosition(
+                    wallBoxTwoPosition[0],
+                    wallBoxTwoPosition[1],
+                    new WallBox(maze, wallBoxTwoPosition[0], wallBoxTwoPosition[1])
+            );
 
             assertDoesNotThrow(() -> {
                 manager.doPersist(maze);
@@ -145,19 +151,23 @@ public class FileMazePersistenceManagerTest {
 
                 // Checking that the boxes are correctly placed in the file
                 assertEquals(
-                        lines.get(departureBoxPosition[0]).charAt(departureBoxPosition[1]),
+                        lines.get(departureBoxPosition[1]).charAt(departureBoxPosition[0]),
                         manager.getDepartureBoxRepresentation()
                 );
                 assertEquals(
-                        lines.get(arrivalBoxPosition[0]).charAt(arrivalBoxPosition[1]),
+                        lines.get(arrivalBoxPosition[1]).charAt(arrivalBoxPosition[0]),
                         manager.getArrivalBoxRepresentation()
                 );
                 assertEquals(
-                        lines.get(wallBoxPosition[0]).charAt(wallBoxPosition[1]),
+                        lines.get(wallBoxPosition[1]).charAt(wallBoxPosition[0]),
                         manager.getWallBoxRepresentation()
                 );
                 assertEquals(
-                        lines.get(emptyBoxPosition[0]).charAt(emptyBoxPosition[1]),
+                        lines.get(wallBoxTwoPosition[1]).charAt(wallBoxTwoPosition[0]),
+                        manager.getWallBoxRepresentation()
+                );
+                assertEquals(
+                        lines.get(emptyBoxPosition[1]).charAt(emptyBoxPosition[0]),
                         manager.getEmptyBoxRepresentation()
                 );
 

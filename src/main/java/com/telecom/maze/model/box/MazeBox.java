@@ -48,7 +48,7 @@ public abstract class MazeBox implements Vertex, MazeBoxModel {
     }
 
     @Override
-    public void setEmpty() {
+    public final void setEmpty() {
         this.getMaze().changeBoxAtPosition(
                 this.getxPosition(),
                 this.getyPosition(),
@@ -66,7 +66,7 @@ public abstract class MazeBox implements Vertex, MazeBoxModel {
     }
 
     @Override
-    public void setWall() {
+    public final void setWall() {
         this.getMaze().changeBoxAtPosition(
                 this.getxPosition(),
                 this.getyPosition(),
@@ -84,7 +84,7 @@ public abstract class MazeBox implements Vertex, MazeBoxModel {
     }
 
     @Override
-    public void setDeparture() {
+    public final void setDeparture() {
         this.getMaze().changeBoxAtPosition(
                 this.getxPosition(),
                 this.getyPosition(),
@@ -102,7 +102,7 @@ public abstract class MazeBox implements Vertex, MazeBoxModel {
     }
 
     @Override
-    public void setArrival() {
+    public final void setArrival() {
         this.getMaze().changeBoxAtPosition(
                 this.getxPosition(),
                 this.getyPosition(),
@@ -115,7 +115,7 @@ public abstract class MazeBox implements Vertex, MazeBoxModel {
     }
 
     @Override
-    public boolean belongsToShortestPath() {
+    public final boolean belongsToShortestPath() {
         return this.getMaze().doesMazeBoxBelongsToShortestPath(this);
     }
 }

@@ -5,7 +5,7 @@ import com.telecom.maze.model.graph.Distance;
 import com.telecom.maze.model.graph.Graph;
 import com.telecom.maze.model.graph.Vertex;
 
-public class Dikjstra {
+public class Dijkstra {
     public static ShortestPaths dijkstra(
             final Graph graph,
             final Vertex startVertex,
@@ -43,6 +43,7 @@ public class Dikjstra {
                         }
                     } catch (NotAdjacentVerticesException e) {
                         // This kind of exception should never happen.
+                        System.out.println(e.getMessage());
                         System.exit(1);
                     }
                 }

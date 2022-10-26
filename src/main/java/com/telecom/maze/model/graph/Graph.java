@@ -12,6 +12,13 @@ public interface Graph extends Distance {
      */
     Set<Vertex> getSuccessors(final Vertex vertex);
 
+    /**
+     * Cette méthode permet de retourner un des noeuds du graphe en se basant sur son identifiant.
+     * @param label L'identifiant du noeud.
+     * @return Un noeud du graphe.
+     */
+    Vertex getVertex( String label );
+
 
     /**
      * Cette permet permet de retourner tous les sommets contenus dans le graphe.
