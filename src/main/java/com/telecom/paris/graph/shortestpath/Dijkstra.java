@@ -12,11 +12,18 @@ public final class Dijkstra {
             final Vertex endVertex,
             final Distance distance
     ) {
+        // Checking that the parameters are not null
+        if (graph == null || startVertex == null || endVertex == null || distance == null) {
+            throw new IllegalArgumentException("The parameters cannot be null");
+        }
+
         final ProcessedVertexesSet processedVertexesSet = new BaseProcessedVertexesSet();
         final MinDistance minDistance = new BaseMinDistance();
 
         Vertex pivotVertex = startVertex;
         minDistance.setMinDistance(startVertex, 0);
+
+
 
         for (Vertex vertex: graph.getVertexes()) {
             if (!vertex.equals(startVertex)) {
@@ -26,7 +33,7 @@ public final class Dijkstra {
 
         final ShortestPaths shortestPaths = new BaseShortestPath();
 
-        while (!processedVertexesSet.contains(endVertex)) {
+        while (!processedVertexesSet.contains(endVertex) && pivotVertex != null) {
             int minDistancePivot = minDistance.getMinDistance(pivotVertex);
 
             for (Vertex successor: pivotVertex.getSuccessors()) {

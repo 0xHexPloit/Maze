@@ -16,7 +16,6 @@ public class SerializationFileMazePersistenceManager extends FileMazePersistence
         ) {
             MazeModel model = (MazeModel) ois.readObject();
             Set<ModelObserver> observers = new HashSet<>();
-            observers.add((ModelObserver) this.getEditor());
             model.setObservers(observers);
             return model;
         } catch (FileNotFoundException | ClassNotFoundException e) {
