@@ -5,7 +5,7 @@ import com.telecom.paris.graph.Distance;
 import com.telecom.paris.graph.Graph;
 import com.telecom.paris.graph.Vertex;
 
-public class Dijkstra {
+public final class Dijkstra {
     public static ShortestPaths dijkstra(
             final Graph graph,
             final Vertex startVertex,

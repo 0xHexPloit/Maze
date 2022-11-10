@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class BaseMinDistance implements MinDistance {
+public final class BaseMinDistance implements MinDistance {
     private final Map<Vertex, Integer> minDistances = new HashMap<>();
     @Override
     public int getMinDistance(final Vertex vertex) {

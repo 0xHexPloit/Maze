@@ -1,12 +1,6 @@
-package com.telecom.paris.maze.model;
+package com.telecom.paris.maze.ui;
 
-import com.telecom.paris.maze.model.box.ArrivalBox;
-import com.telecom.paris.maze.model.box.DepartureBox;
-import com.telecom.paris.maze.model.box.WallBox;
-
-import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import java.awt.*;
+import java.awt.Component;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -14,22 +8,29 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+import com.telecom.paris.maze.model.*;
+import com.telecom.paris.maze.model.box.ArrivalBox;
+import com.telecom.paris.maze.model.box.DepartureBox;
+import com.telecom.paris.maze.model.box.WallBox;
+
 public class FileMazePersistenceManager implements MazePersistenceManager {
-	
+
 	private final char BOX_DEPARTURE = 'D';
 	private final char BOX_ARRIVAL = 'A';
 	private final char BOX_WALL = 'W';
 	private final char BOX_EMPTY = 'E';
-	
+
 	private Component editor;
-	
-    private final FileNameExtensionFilter filter;
-	
+
+	private final FileNameExtensionFilter filter;
+
 	public FileMazePersistenceManager() {
 		this.editor = null;
-		filter = new FileNameExtensionFilter( "Maze files only (*.maze)", "maze" );
+		filter = new FileNameExtensionFilter("Maze files only (*.maze)", "maze");
 	}
-
 
 	public char getDepartureBoxRepresentation() {
 		return BOX_DEPARTURE;
@@ -47,33 +48,37 @@ public class FileMazePersistenceManager implements MazePersistenceManager {
 		return BOX_EMPTY;
 	}
 
-	public void setEditor(Component editor ) {
+	public void setEditor(Component editor) {
 		this.editor = editor;
 	}
-	
-	@Override
-	public MazeModel read( String mazeId ) 
-	throws IOException {
-		if ( mazeId == null || mazeId.isEmpty() ) {
-			final JFileChooser chooser = new JFileChooser(); //This class enable us to open a file explorer for a more ergonomic design. 
-		    chooser.setFileFilter(filter);
-		    chooser.setDialogType(JFileChooser.OPEN_DIALOG);
-		   
-		    final int returnVal = chooser.showOpenDialog( editor );
-		    
-		    if ( returnVal == JFileChooser.APPROVE_OPTION ) {
-		    	final File file = chooser.getSelectedFile();
-		    	mazeId = file.getPath();
-			}
-		    else {
-		    	throw new IOException( "No file selected!" );
-		    }
-		}
-		
-		return doRead( mazeId );
+
+	public Component getEditor() {
+		return this.editor;
 	}
-	
-	protected MazeModel doRead( final String mazeId ) throws IOException {
+
+	@Override
+	public MazeModel read(String mazeId)
+			throws IOException {
+		if (mazeId == null || mazeId.isEmpty()) {
+			final JFileChooser chooser = new JFileChooser(); //This class enable us to open a file explorer for a more ergonomic design.
+			chooser.setFileFilter(filter);
+			chooser.setDialogType(JFileChooser.OPEN_DIALOG);
+
+			final int returnVal = chooser.showOpenDialog(editor);
+
+			if (returnVal == JFileChooser.APPROVE_OPTION) {
+				final File file = chooser.getSelectedFile();
+				mazeId = file.getPath();
+			} else {
+				throw new IOException("No file selected!");
+			}
+		}
+
+		return doRead(mazeId);
+	}
+
+	protected MazeModel doRead(final String mazeId)
+			throws IOException {
 		Path path = Paths.get(mazeId);
 		List<String> lines = Files.readAllLines(path);
 
@@ -106,7 +111,7 @@ public class FileMazePersistenceManager implements MazePersistenceManager {
 		);
 
 		// Setting the id of the maze
-		maze.setId( mazeId );
+		maze.setId(mazeId);
 
 		for (int rowIndex = 0; rowIndex < numberRows; rowIndex++) {
 			String line = lines.get(rowIndex);
@@ -130,44 +135,48 @@ public class FileMazePersistenceManager implements MazePersistenceManager {
 								new ArrivalBox(maze, columnIndex, rowIndex)
 						);
 					}
-					case BOX_EMPTY -> {} // Nothing to do, maze is by default filled with empty boxes.
+					case BOX_EMPTY -> {
+					} // Nothing to do, maze is by default filled with empty boxes.
 					case BOX_WALL -> maze.changeBoxAtPosition(
 							columnIndex,
 							rowIndex,
 							new WallBox(maze, columnIndex, rowIndex)
 					);
-					default ->
-						throw new MazeReadingException(
-								String.format("Invalid symbol: %s",column),
-								mazeId,
-								rowIndex
-						);
+					default -> throw new MazeReadingException(
+							String.format("Invalid symbol: %s", column),
+							mazeId,
+							rowIndex
+					);
 
 				}
 			}
- 		}
+		}
 
 		return maze;
 	}
 
+
+
 	@Override
-	public void persist( final MazeModel mazeModel ) throws IOException {
+	public void persist( final MazeModel mazeModel )
+	throws IOException {
 		String mazeId = mazeModel.getId();
-		
+
 		if ( mazeId == null || mazeId.isEmpty() ) {
 			mazeId = newMazeId();
-			
+
 			if (mazeId == null || mazeId.isEmpty() ) {
-				throw new IOException("No file path was chosen!" );
+				throw new IOException("No file path was choosen!" );
 			}
-			
+
 			mazeModel.setId( mazeId );
 		}
-		
+
 		doPersist( mazeModel );
 	}
-		
-	protected void doPersist( final MazeModel mazeModel ) throws IOException {
+
+	protected void doPersist( final MazeModel mazeModel )
+	throws IOException {
 		// Define the path where the file will be saved
 		final Path path = Paths.get(mazeModel.getId());
 
@@ -195,8 +204,9 @@ public class FileMazePersistenceManager implements MazePersistenceManager {
 	}
 
 	@Override
-	public boolean delete(MazeModel mazeModel)  throws IOException {
-		return Files.deleteIfExists(Paths.get( mazeModel.getId()));
+	public boolean delete(MazeModel mazeModel)
+	throws IOException {
+		return new File( mazeModel.getId() ).delete();
 	}
 
 	private String newMazeId() {
@@ -204,13 +214,13 @@ public class FileMazePersistenceManager implements MazePersistenceManager {
 	    chooser.setFileFilter( filter );
 	    chooser.setDialogType( JFileChooser.SAVE_DIALOG );
 	    final int returnVal = chooser.showSaveDialog( editor );
-	    
+
 	    if ( returnVal == JFileChooser.APPROVE_OPTION ) {
 	    	final File file = chooser.getSelectedFile();
 
 	    	return file.getPath();
 	    }
-	    
+
 	    return null;
 	}
 }

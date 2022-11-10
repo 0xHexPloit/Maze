@@ -3,7 +3,10 @@ package com.telecom.paris.maze.model;
 import com.telecom.paris.maze.model.box.MazeBox;
 import com.telecom.paris.graph.Graph;
 
-public interface Maze extends Graph, MazeModel {
+import java.io.Serializable;
+import java.util.Set;
+
+public interface Maze extends Graph, MazeModel, Serializable {
     /**
      *  This method permits to change the type of a box in the maze at the specified position.
      * @param xPosition the x position of the box to change

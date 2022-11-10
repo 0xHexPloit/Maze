@@ -1,6 +1,6 @@
 package com.telecom.paris.maze.model;
 
-public class BaseMazeFactory implements MazeFactory {
+public final class BaseMazeFactory implements MazeFactory {
     private static final BaseMazeFactory INSTANCE = new BaseMazeFactory();
 
     // Defining the constructor as private permits to implement the singleton pattern

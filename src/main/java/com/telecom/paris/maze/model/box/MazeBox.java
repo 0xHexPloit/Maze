@@ -4,9 +4,14 @@ import com.telecom.paris.maze.model.MazeBoxModel;
 import com.telecom.paris.maze.model.Maze;
 import com.telecom.paris.graph.Vertex;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Set;
 
-public abstract class MazeBox implements Vertex, MazeBoxModel {
+public abstract class MazeBox implements Vertex, MazeBoxModel, Serializable {
+    @Serial
+    private static final long serialVersionUID = 202211101416L;
+
     private final Maze maze;
     private final int xPosition;
     private final int yPosition;

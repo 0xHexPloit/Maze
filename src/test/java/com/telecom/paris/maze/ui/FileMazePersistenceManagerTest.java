@@ -1,6 +1,11 @@
-package com.telecom.paris.maze.model;
+package com.telecom.paris.maze.ui;
 
+import com.telecom.paris.maze.model.BaseMaze;
+import com.telecom.paris.maze.model.BaseMazeFactory;
+import com.telecom.paris.maze.model.MazeFactory;
+import com.telecom.paris.maze.model.MazeModel;
 import com.telecom.paris.maze.model.box.EmptyBox;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -17,6 +22,8 @@ import java.util.List;
 import com.telecom.paris.maze.model.box.ArrivalBox;
 import com.telecom.paris.maze.model.box.DepartureBox;
 import com.telecom.paris.maze.model.box.WallBox;
+
+
 
 
 @DisplayName("FileMazePersistenceManager")

@@ -5,15 +5,19 @@ import com.telecom.paris.graph.shortestpath.Dijkstra;
 import com.telecom.paris.graph.shortestpath.ShortestPaths;
 import com.telecom.paris.graph.Vertex;
 
+import java.io.Serial;
 import java.util.*;
 import java.util.function.Predicate;
 
-public class BaseMaze implements Maze {
+public final class BaseMaze implements Maze {
+    @Serial
+    private static final long serialVersionUID = 202211101416L;
+
     private final int height;
     private final int width;
     private final MazeBox[][] tiles;
 
-    private final Set<ModelObserver> observers;
+    private transient Set<ModelObserver> observers;
 
     private ShortestPaths shortestPaths;
 
@@ -94,6 +98,9 @@ public class BaseMaze implements Maze {
             return null;
     }
 
+
+
+
     @Override
     public Set<Vertex> getVertexes() {
         Set<Vertex> vertices = new HashSet<>();
@@ -166,6 +173,11 @@ public class BaseMaze implements Maze {
         MazeBox endBox = this.getFirstBoxVerifyingCondition(MazeBox::isArrival);
 
         return this.shortestPaths.getShortestPathBetween(startBox, endBox).contains(box);
+    }
+
+    @Override
+    public void setObservers(Set<ModelObserver> observers) {
+        this.observers = observers;
     }
 
 

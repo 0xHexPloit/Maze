@@ -1,5 +1,7 @@
 package com.telecom.paris.maze.model;
 
+import com.telecom.paris.maze.model.MazeModel;
+
 import java.io.IOException;
 
 public interface MazePersistenceManager {
@@ -10,7 +12,7 @@ public interface MazePersistenceManager {
      * @return Une instance de labyrinthe
      * @throws IOException Une exception peut être levée si l'instance de labyrinthe n'a pas pu être créée correctement.
      */
-    MazeModel read( String mazeId ) throws IOException;
+    MazeModel read(String mazeId ) throws IOException;
 
     /**
      * Cette méthode permet de sauvegarder une instance de Maze dans un un support de stockage quelconque

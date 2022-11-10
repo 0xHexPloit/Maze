@@ -1,6 +1,7 @@
 package com.telecom.paris.maze.model;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Interface providing various methods required for displaying a maze in a maze editor.  
@@ -33,6 +34,12 @@ public interface MazeModel {
 	 * @return <code>true</code> if this observer was actually removed, false otherwise.
 	 */
 	boolean removeObserver( ModelObserver observer );
+
+	/**
+	 * This method permits to set the observers of the maze. This method is intended to be used for deserialization.
+	 * @param observers the observers of the maze
+	 */
+	public void setObservers(Set<ModelObserver> observers);
 	
 	/**
 	 * Returns this maze's width.
