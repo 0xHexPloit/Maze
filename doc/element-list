@@ -1,0 +1,7 @@
+com.telecom.paris
+com.telecom.paris.graph
+com.telecom.paris.graph.shortestpath
+com.telecom.paris.maze.model
+com.telecom.paris.maze.model.box
+com.telecom.paris.maze.model.exceptions
+com.telecom.paris.maze.ui

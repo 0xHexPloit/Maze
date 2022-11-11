@@ -6,23 +6,23 @@ import java.io.Serializable;
 
 public interface MazeBox extends Vertex, MazeBoxModel, Serializable {
     /**
-     * Cette méthode permet d'obtenir la position de la case sur l'axe des abscisses.
+     * This method gives the x position of the box in the maze.
      *
-     * @return la position de la case sur l'axe des abscisses.
+     * @return The x position of the box in the maze.
      */
     public int getHorizontalPosition();
 
     /**
-     * Cette méthode permet d'obtenir la position de la case sur l'axe des ordonnées.
+     * This method gives the y position of the box in the maze.
      *
-     * @return la position de la case sur l'axe des ordonnées.
+     * @return The y position of the box in the maze.
      */
     public int getVerticalPosition();
 
     /**
-     * Cette méthode permet de savoir si deux cases sont voisines.
-     * @param box la case à tester.
-     * @return un booléen indiquant si les deux cases sont voisines.
+     * This method permits to test if a box is adjacent to another box.
+     * @param box The box for which we want to know if it is adjacent to the current box.
+     * @return A boolean indicating if the box is adjacent to the current box or not.
      */
     public boolean isNeighbourOf(final MazeBox box);
 }

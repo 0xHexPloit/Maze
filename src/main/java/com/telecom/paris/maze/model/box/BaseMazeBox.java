@@ -53,7 +53,7 @@ public abstract class BaseMazeBox implements MazeBox  {
         this.maze.changeBoxAtPosition(
                 this.getHorizontalPosition(),
                 this.getVerticalPosition(),
-                new EmptyBoxBase(
+                new EmptyBox(
                         this.maze,
                         this.getHorizontalPosition(),
                         this.getVerticalPosition()
@@ -71,7 +71,7 @@ public abstract class BaseMazeBox implements MazeBox  {
         this.maze.changeBoxAtPosition(
                 this.getHorizontalPosition(),
                 this.getVerticalPosition(),
-                new WallBoxBase(
+                new WallBox(
                         this.maze,
                         this.getHorizontalPosition(),
                         this.getVerticalPosition()
@@ -89,7 +89,7 @@ public abstract class BaseMazeBox implements MazeBox  {
         this.maze.changeBoxAtPosition(
                 this.getHorizontalPosition(),
                 this.getVerticalPosition(),
-                new DepartureBoxBase(
+                new DepartureBox(
                         this.maze,
                         this.getHorizontalPosition(),
                         this.getVerticalPosition()
@@ -107,7 +107,7 @@ public abstract class BaseMazeBox implements MazeBox  {
         this.maze.changeBoxAtPosition(
                 this.getHorizontalPosition(),
                 this.getVerticalPosition(),
-                new ArrivalBoxBase(
+                new ArrivalBox(
                         this.maze,
                         this.getHorizontalPosition(),
                         this.getVerticalPosition()
@@ -122,6 +122,10 @@ public abstract class BaseMazeBox implements MazeBox  {
 
     @Override
     public boolean isNeighbourOf(final MazeBox box) {
+        // Checking that both vertexes are accessible
+        if (!(this instanceof AccessibleBox)) return false;
+        if (!(box instanceof AccessibleBox)) return false;
+
         int verticalDistance = Math.abs(this.getVerticalPosition() - box.getVerticalPosition());
         int horizontalDistance = Math.abs(this.getHorizontalPosition() - box.getHorizontalPosition());
         return verticalDistance <= 1 && horizontalDistance <= 1;

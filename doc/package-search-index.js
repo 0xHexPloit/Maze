@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.telecom.paris"},{"l":"com.telecom.paris.graph"},{"l":"com.telecom.paris.graph.shortestpath"},{"l":"com.telecom.paris.maze.model"},{"l":"com.telecom.paris.maze.model.box"},{"l":"com.telecom.paris.maze.model.exceptions"},{"l":"com.telecom.paris.maze.ui"}];updateSearchResults();

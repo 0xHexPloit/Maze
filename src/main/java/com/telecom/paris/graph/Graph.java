@@ -4,26 +4,26 @@ import java.util.Set;
 
 public interface Graph extends Distance {
     /**
-     * Cette méthode permet de retourner l'ensemble des sommets connectés au sommet 'vertex' (par l'intermédiaire d'une
-     * arrête).
+     * This method returns all the vertices that are adjacent to the given vertex.
      *
-     * @param vertex Un sommet du graphe.
-     * @return Une liste de sommets connectés à 'vertex'.
+     * @param vertex One of the vertices of the edge.
+     * @return A set of all the vertices that are adjacent to the given vertex.
      */
     Set<Vertex> getSuccessors(final Vertex vertex);
 
     /**
-     * Cette méthode permet de retourner un des noeuds du graphe en se basant sur son identifiant.
-     * @param label L'identifiant du noeud.
-     * @return Un noeud du graphe.
+     * This method permits to retrieve one of the vertices of the graph based on its label.
+     *
+     * @param label The label of the vertex to retrieve.
+     * @return A vertex with the given label or null if no vertex with the given label exists.
      */
     Vertex getVertex( String label );
 
 
     /**
-     * Cette permet permet de retourner tous les sommets contenus dans le graphe.
+     * This method returns all the vertices of the graph.
      *
-     * @return Les sommets du graphe.
+     * @return A set of all the vertices of the graph.
      */
     Set<Vertex> getVertexes();
 }

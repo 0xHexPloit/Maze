@@ -4,14 +4,13 @@ import com.telecom.paris.maze.model.exceptions.NotAdjacentVerticesException;
 
 public interface Distance {
     /**
-     * Cette méthode permet de retourner le poids de l'arrête reliant 'vertexOne' à 'vertexTwo' (ou 'vertex two' à
-     * 'vertexOne');
+     * This method return the weight of the edge between two different vertices of the graph.
      *
-     * @param vertexOne Un sommet du graphe
-     * @param vertexTwo Un sommet du graphe différent de 'vertex one'
-     * @return Le poids de l'arrête reliant les deux sommets du graphe.
+     * @param vertexOne One of the vertices of the edge.
+     * @param vertexTwo Another vertex of the edge.
+     * @return The weight of the edge.
      *
-     * @throws NotAdjacentVerticesException Si les deux sommets ne sont pas adjacents.
+     * @throws NotAdjacentVerticesException In case the two vertices are not adjacent an exception is thrown.
      */
     int getEdgeWeight(final Vertex vertexOne, final Vertex vertexTwo) throws NotAdjacentVerticesException;
 }

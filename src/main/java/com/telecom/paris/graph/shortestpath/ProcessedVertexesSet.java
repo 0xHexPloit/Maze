@@ -4,18 +4,19 @@ import com.telecom.paris.graph.Vertex;
 
 public interface ProcessedVertexesSet {
     /**
-     * Cette fonction permet de rajouter un sommet à l'ensemble des sommets déjà parcourus.
-     * Attention, si le sommet est déjà présent,il ne sera pas rajouté.
+     * This method permits to add a vertex to the set of already processed vertices.
      *
-     * @param vertex Un sommet d'un graphe.
+     * @param vertex One of the vertices of the edge.
      */
     void addVertex(final Vertex vertex);
 
 
     /**
-     * Cette fonction permet de déterminer si un sommet à déjà été parcouru
-     * @param vertex Un sommet d'un graphe
-     * @return Un booléen indiquant si le sommet vertex a déjà été parcouru ou non
+     * This methods permits to check if a vertex has already been processed.
+     *
+     * @param vertex One of the vertices of the edge.
+     *
+     * @return A boolean indicating if the vertex has already been processed.
      */
     boolean contains(final Vertex vertex);
 }

@@ -13,10 +13,10 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import com.telecom.paris.maze.model.*;
-import com.telecom.paris.maze.model.box.ArrivalBoxBase;
-import com.telecom.paris.maze.model.box.DepartureBoxBase;
+import com.telecom.paris.maze.model.box.ArrivalBox;
+import com.telecom.paris.maze.model.box.DepartureBox;
 import com.telecom.paris.maze.model.box.MazeBoxModel;
-import com.telecom.paris.maze.model.box.WallBoxBase;
+import com.telecom.paris.maze.model.box.WallBox;
 import com.telecom.paris.maze.model.exceptions.MazeReadingException;
 
 public class FileMazePersistenceManager implements MazePersistenceManager {
@@ -118,14 +118,14 @@ public class FileMazePersistenceManager implements MazePersistenceManager {
 							maze.changeBoxAtPosition(
 									columnIndex,
 									rowIndex,
-									new DepartureBoxBase(maze, columnIndex, rowIndex)
+									new DepartureBox(maze, columnIndex, rowIndex)
 							);
 						}
 						case BOX_ARRIVAL -> {
 							maze.changeBoxAtPosition(
 									columnIndex,
 									rowIndex,
-									new ArrivalBoxBase(maze, columnIndex, rowIndex)
+									new ArrivalBox(maze, columnIndex, rowIndex)
 							);
 						}
 						case BOX_EMPTY -> {
@@ -133,7 +133,7 @@ public class FileMazePersistenceManager implements MazePersistenceManager {
 						case BOX_WALL -> maze.changeBoxAtPosition(
 								columnIndex,
 								rowIndex,
-								new WallBoxBase(maze, columnIndex, rowIndex)
+								new WallBox(maze, columnIndex, rowIndex)
 						);
 						default -> throw new MazeReadingException(
 								String.format("Invalid symbol: %s", column),

@@ -4,16 +4,16 @@ import java.util.Set;
 
 public interface Vertex {
     /**
-     * Cette méthode renvoie le nom du sommet
+     * This method returns the label of the vertex.
      *
-     * @return Le nom du sommet
+     * @return The label of the vertex.
      */
     String getLabel();
 
     /**
-     * Cette méthode renvoie l'ensemble des sommets auxquels le sommet est connecté.
+     * This method returns all the vertices that are adjacent to the given vertex.
      *
-     * @return L'ensemble des sommets auxquels le sommet est connecté.
+     * @return A set of all the vertices that are adjacent to the given vertex.
      */
     Set<Vertex> getSuccessors();
 }

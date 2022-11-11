@@ -1,15 +1,14 @@
 package com.telecom.paris.maze.model.box;
 
-
 import com.telecom.paris.maze.model.Maze;
 
-public final class EmptyBoxBase extends BaseMazeBox implements AccessibleBox {
-    public EmptyBoxBase(Maze maze, int xPosition, int yPosition) {
+public final class WallBox extends BaseMazeBox {
+    public WallBox(Maze maze, int xPosition, int yPosition) {
         super(maze, xPosition, yPosition);
     }
 
     @Override
-    public boolean isEmpty() {
+    public boolean isWall() {
         return true;
     }
 }

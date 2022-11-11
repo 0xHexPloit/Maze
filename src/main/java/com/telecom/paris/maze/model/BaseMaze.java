@@ -38,7 +38,7 @@ public final class BaseMaze implements Maze {
     private void fillTilesWithEmptyBoxes() {
         for (int rowIndex = 0; rowIndex < height; rowIndex++) {
             for (int colIndex = 0; colIndex < width; colIndex++) {
-                this.tiles[rowIndex][colIndex] = new EmptyBoxBase(this, colIndex, rowIndex);
+                this.tiles[rowIndex][colIndex] = new EmptyBox(this, colIndex, rowIndex);
             }
         }
         // Notify observers that the maze has changed.
@@ -136,10 +136,6 @@ public final class BaseMaze implements Maze {
         // Checking that src and dst are not null
         if (src == null || dst == null) throw new IllegalArgumentException("src or dst is null");
 
-        // Checking that both vertexes are accessible
-        if (!(src instanceof AccessibleBox)) throw new NotAdjacentVerticesException(src, dst);
-        if (!(dst instanceof AccessibleBox)) throw new NotAdjacentVerticesException(src, dst);
-
         // Checking that dst is a neighbour of src
         BaseMazeBox srcBox = (BaseMazeBox) src;
         BaseMazeBox dstBox = (BaseMazeBox) dst;
@@ -170,6 +166,7 @@ public final class BaseMaze implements Maze {
         }
     }
 
+    @Override
     public boolean doesMazeBoxBelongsToShortestPath(final BaseMazeBox box) {
         // Checking if the maze has been solved
         if (this.shortestPaths == null) return false;
@@ -247,8 +244,8 @@ public final class BaseMaze implements Maze {
     @Override
     public boolean solve() {
         Logger.getGlobal().info("Solving maze");
-        BaseMazeBox startBox = this.getFirstBoxVerifyingCondition(box -> box instanceof DepartureBoxBase);
-        BaseMazeBox endBox = this.getFirstBoxVerifyingCondition(box -> box instanceof ArrivalBoxBase);
+        BaseMazeBox startBox = this.getFirstBoxVerifyingCondition(box -> box instanceof DepartureBox);
+        BaseMazeBox endBox = this.getFirstBoxVerifyingCondition(box -> box instanceof ArrivalBox);
 
         this.shortestPaths = Dijkstra.dijkstra(
                 this,
