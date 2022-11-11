@@ -228,8 +228,14 @@ public class FileMazePersistenceManager implements MazePersistenceManager {
 
 	    if ( returnVal == JFileChooser.APPROVE_OPTION ) {
 	    	final File file = chooser.getSelectedFile();
+			String filePath = file.getPath();
 
-	    	return file.getPath();
+			// Add the extension if it is missing or not correct
+			final String fileExtension = String.format(".%s", this.filter.getExtensions()[0]);
+			if ( !filePath.endsWith( fileExtension ) ) {
+				filePath += fileExtension;
+			}
+			return filePath;
 	    }
 
 	    return null;

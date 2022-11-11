@@ -15,7 +15,13 @@ import com.telecom.paris.maze.ui.SerializationFileMazePersistenceManager;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        final String configPath = args.length == 1 ? args[0] : "src/main/resources/maze.properties";
+        // Checking that the config path has been provided.
+        if (args.length != 1) {
+            System.err.println("Missing config file path.");
+            System.exit(1);
+        }
+
+        final String configPath = args[0];
         final Properties properties = new Properties();
         properties.load(
                 Paths.get(configPath)
@@ -28,6 +34,7 @@ public class Main {
         // Checking if we should save the logs in a file
         if (Boolean.parseBoolean(properties.getProperty("maze.logs.saveToFile"))) {
             final Path logsPath = Paths.get(properties.getProperty("maze.logs.path"));
+            Logger.getGlobal().info("Saving logs to " + logsPath);
             Logger.getGlobal().addHandler(new FileHandler(logsPath.toString()));
         }
 
@@ -47,6 +54,5 @@ public class Main {
 
         final MazeEditor editor = new MazeEditor(mazeModel, mazePersistenceManager);
         mazePersistenceManager.setEditor(editor);
-        Logger.getGlobal().info("Closing the editor");
     }
 }
