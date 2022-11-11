@@ -18,6 +18,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.logging.Logger;
 
 import com.telecom.paris.maze.model.box.ArrivalBoxBase;
 import com.telecom.paris.maze.model.box.DepartureBoxBase;
@@ -33,7 +34,6 @@ public class FileMazePersistenceManagerTest {
 
     @BeforeAll
     public static void init() {
-
         FileMazePersistenceManagerTest.manager = new FileMazePersistenceManager();
         FileMazePersistenceManagerTest.factory = BaseMazeFactory.getInstance();
         FileMazePersistenceManagerTest.filesPath = Paths.get("src/test/resources");

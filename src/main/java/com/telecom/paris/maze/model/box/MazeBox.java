@@ -1,6 +1,5 @@
 package com.telecom.paris.maze.model.box;
 
-
 import com.telecom.paris.graph.Vertex;
 
 import java.io.Serializable;

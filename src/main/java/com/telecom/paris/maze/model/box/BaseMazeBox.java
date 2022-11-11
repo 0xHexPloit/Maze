@@ -1,10 +1,10 @@
 package com.telecom.paris.maze.model.box;
 
-import com.telecom.paris.maze.model.Maze;
-import com.telecom.paris.graph.Vertex;
-
 import java.io.Serial;
 import java.util.Set;
+
+import com.telecom.paris.maze.model.Maze;
+import com.telecom.paris.graph.Vertex;
 
 public abstract class BaseMazeBox implements MazeBox  {
     @Serial

@@ -1,15 +1,15 @@
 package com.telecom.paris.maze.model;
 
+import java.io.Serial;
+import java.util.*;
+import java.util.function.Predicate;
+import java.util.logging.Logger;
+
 import com.telecom.paris.maze.model.box.*;
 import com.telecom.paris.graph.shortestpath.Dijkstra;
 import com.telecom.paris.graph.shortestpath.ShortestPaths;
 import com.telecom.paris.graph.Vertex;
 import com.telecom.paris.maze.model.exceptions.NotAdjacentVerticesException;
-
-import java.io.Serial;
-import java.util.*;
-import java.util.function.Predicate;
-import java.util.logging.Logger;
 
 public final class BaseMaze implements Maze {
     @Serial

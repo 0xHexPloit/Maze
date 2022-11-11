@@ -13,12 +13,17 @@ import com.telecom.paris.maze.model.MazeModel;
 import com.telecom.paris.maze.ui.MazeEditor;
 import com.telecom.paris.maze.ui.SerializationFileMazePersistenceManager;
 
-
-
 public class Main {
     public static void main(String[] args) throws IOException {
+        final String configPath = args.length == 1 ? args[0] : "src/main/resources/maze.properties";
         final Properties properties = new Properties();
-        properties.load(Paths.get("src/main/resources/maze.properties").toFile().toURI().toURL().openStream());
+        properties.load(
+                Paths.get(configPath)
+                        .toFile()
+                        .toURI()
+                        .toURL()
+                        .openStream()
+        );
 
         // Checking if we should save the logs in a file
         if (Boolean.parseBoolean(properties.getProperty("maze.logs.saveToFile"))) {
@@ -42,5 +47,6 @@ public class Main {
 
         final MazeEditor editor = new MazeEditor(mazeModel, mazePersistenceManager);
         mazePersistenceManager.setEditor(editor);
+        Logger.getGlobal().info("Closing the editor");
     }
 }

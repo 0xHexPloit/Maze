@@ -1,11 +1,11 @@
 package com.telecom.paris.maze.ui;
 
-import com.telecom.paris.maze.model.MazeModel;
-import com.telecom.paris.maze.model.ModelObserver;
-
 import java.io.*;
 import java.util.HashSet;
 import java.util.Set;
+
+import com.telecom.paris.maze.model.MazeModel;
+import com.telecom.paris.maze.model.ModelObserver;
 
 public class SerializationFileMazePersistenceManager extends FileMazePersistenceManager {
     @Override
