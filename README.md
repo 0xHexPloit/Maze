@@ -1,25 +1,43 @@
 
 # MAZE
-## Final Java Project - Telecom
+## Final Java Project - Telecom Paris
 
-Author: Hugo PEYRON
+### Description
+The aim of this project was to apply all the knowledge acquired 
+during the Java course at Telecom Paris. The purpose of the project
+is to allow the user to create a maze and to find out if it is possible 
+to reach the arrival point from the starting point using Dijkstra's algorithm.
 
-Certain part of the project required to test the code.
+### Run
+To run the project, you will have to download the following file `MAZE_HUGO_PEYRON_TELECOM_PARIS.zip
+`. The latter can be found in the release section of this repository.
 
-To do so, the `JUNIT` library (version 5) was used. It's one of the
-dependencies of the project. 
+Once downloaded, you will have to unzip the file and run the following command in the terminal:
+```
+java -jar Maze.jar ./maze.properties
+```
 
-If you have `maven` installed, you can run the program with
-the following command:
+The `maze.properties` file is the configuration file of the project. It contains the following parameters:
+```
+maze.height=10
+maze.width=10
+maze.persistence.use_serialization=true
+maze.logs.saveToFile=false
+maze.logs.path=logs.txt
+```
 
-    mvn exec:java
+In case you would like to see how a maze is represented in a text file, 
+you can change the `maze.persistence.use_serialization` parameter to `false`.
 
 
-You can also run the tests with the following command:
+### Test
+I/O tests are available in the `test` folder. To run them, you will have to run the following command in the terminal:
+```
+mvn test
+```
 
-    mvn test
+### Remarks
+The UI part of the application was not implemented by myself but by another student of Telecom Paris.
 
-
-REMARKS: 
-- The UI part of the code has not been developped by myself
-- The project contains a `data` folder that you can use to test the program
+### Authors
+This project was developed by **Hugo Peyron** (Cybersecurity and Cyberdefense student at Telecom Paris).
