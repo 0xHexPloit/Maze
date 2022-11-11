@@ -1,4 +1,4 @@
-package com.telecom.paris.maze.model;
+package com.telecom.paris.maze.model.box;
 
 /**
  * Interface providing various methods required for displaying a maze box in a maze editor.

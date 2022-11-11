@@ -1,5 +1,7 @@
 package com.telecom.paris.maze.model;
 
+import com.telecom.paris.maze.model.box.MazeBoxModel;
+
 import java.util.List;
 import java.util.Set;
 
@@ -53,7 +55,7 @@ public interface MazeModel {
 	 * 
 	 * @return The number of rows of this maze.
 	 */
-	int getHeigth();
+	int getHeight();
 	
 	/**
 	 * Returns the maze box located at the specified coordinates. 
@@ -63,8 +65,8 @@ public interface MazeModel {
 	 * 
 	 * @return The required maze box model. <code>null</code> if the specified coordinates are invalid.
 	 */
-	MazeBoxModel getMazeBox( 	int rowIndex,
-								int colIndex );
+	MazeBoxModel getMazeBox(int rowIndex,
+                            int colIndex );
 	
 	/**
 	 * Returns the total number of boxes of this maze.

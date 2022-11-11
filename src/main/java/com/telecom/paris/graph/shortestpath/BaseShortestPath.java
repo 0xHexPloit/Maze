@@ -2,16 +2,12 @@ package com.telecom.paris.graph.shortestpath;
 
 import com.telecom.paris.graph.Vertex;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public final class BaseShortestPath implements ShortestPaths, Serializable {
-    @Serial
-    private static final long serialVersionUID = 202211101435L;
+public final class BaseShortestPath implements ShortestPaths {
     private final Map<Vertex, Vertex> predecessors = new HashMap<>();
 
     @Override

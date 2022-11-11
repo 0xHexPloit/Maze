@@ -2,8 +2,8 @@ package com.telecom.paris.maze.model.box;
 
 import com.telecom.paris.maze.model.Maze;
 
-public final class WallBox extends MazeBox {
-    public WallBox(Maze maze, int xPosition, int yPosition) {
+public final class WallBoxBase extends BaseMazeBox {
+    public WallBoxBase(Maze maze, int xPosition, int yPosition) {
         super(maze, xPosition, yPosition);
     }
 

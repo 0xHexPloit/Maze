@@ -20,7 +20,7 @@ public class MazePanel extends JPanel {
 
 		this.mazeEditor = mazeEditor;
 		final MazeModel maze = mazeEditor.getMaze();
-		final int numberOfRows = maze.getHeigth();
+		final int numberOfRows = maze.getHeight();
 		final int numberOfColumns = maze.getWidth();
 		boxPanels = new BoxPanel[ numberOfRows ][ numberOfColumns ];
 		
@@ -58,7 +58,7 @@ public class MazePanel extends JPanel {
 		int mazeDrawingPanelHeight = getHeight();
 		
 		final MazeModel maze = mazeEditor.getMaze();
-		int numberOfRows = maze.getHeigth();
+		int numberOfRows = maze.getHeight();
 		int numberOfColumns = maze.getWidth();
 		
 		return new Dimension(mazeDrawingPanelWidth/numberOfColumns, mazeDrawingPanelHeight/numberOfRows);

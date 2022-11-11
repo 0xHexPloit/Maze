@@ -1,9 +1,11 @@
 package com.telecom.paris.graph.shortestpath;
 
-import com.telecom.paris.maze.model.NotAdjacentVerticesException;
+import com.telecom.paris.maze.model.exceptions.NotAdjacentVerticesException;
 import com.telecom.paris.graph.Distance;
 import com.telecom.paris.graph.Graph;
 import com.telecom.paris.graph.Vertex;
+
+import java.util.logging.Logger;
 
 public final class Dijkstra {
     public static ShortestPaths dijkstra(
@@ -23,8 +25,6 @@ public final class Dijkstra {
         Vertex pivotVertex = startVertex;
         minDistance.setMinDistance(startVertex, 0);
 
-
-
         for (Vertex vertex: graph.getVertexes()) {
             if (!vertex.equals(startVertex)) {
                 minDistance.setMinDistance(vertex, Integer.MAX_VALUE);
@@ -34,13 +34,14 @@ public final class Dijkstra {
         final ShortestPaths shortestPaths = new BaseShortestPath();
 
         while (!processedVertexesSet.contains(endVertex) && pivotVertex != null) {
-            int minDistancePivot = minDistance.getMinDistance(pivotVertex);
+            final int minDistancePivot = minDistance.getMinDistance(pivotVertex);
 
             for (Vertex successor: pivotVertex.getSuccessors()) {
                 if (!processedVertexesSet.contains(successor)) {
-                    int minDistanceSuccessor = minDistance.getMinDistance(successor);
+                    final int minDistanceSuccessor = minDistance.getMinDistance(successor);
+
                     try{
-                        int distancePivotSuccessor = distance.getEdgeWeight(pivotVertex, successor);
+                        final int distancePivotSuccessor = distance.getEdgeWeight(pivotVertex, successor);
                         if (minDistancePivot + distancePivotSuccessor < minDistanceSuccessor) {
                             minDistance.setMinDistance(
                                     successor,
@@ -50,14 +51,13 @@ public final class Dijkstra {
                         }
                     } catch (NotAdjacentVerticesException e) {
                         // This kind of exception should never happen.
-                        System.out.println(e.getMessage());
+                        Logger.getGlobal().severe(e.getMessage());
                         System.exit(1);
                     }
                 }
             }
             processedVertexesSet.addVertex(pivotVertex);
             pivotVertex = minDistance.getMinDistanceVertex(processedVertexesSet, graph.getVertexes());
-
         }
 
         return shortestPaths;

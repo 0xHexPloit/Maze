@@ -4,7 +4,7 @@ import com.telecom.paris.maze.model.BaseMaze;
 import com.telecom.paris.maze.model.BaseMazeFactory;
 import com.telecom.paris.maze.model.MazeFactory;
 import com.telecom.paris.maze.model.MazeModel;
-import com.telecom.paris.maze.model.box.EmptyBox;
+import com.telecom.paris.maze.model.box.EmptyBoxBase;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -19,11 +19,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-import com.telecom.paris.maze.model.box.ArrivalBox;
-import com.telecom.paris.maze.model.box.DepartureBox;
-import com.telecom.paris.maze.model.box.WallBox;
-
-
+import com.telecom.paris.maze.model.box.ArrivalBoxBase;
+import com.telecom.paris.maze.model.box.DepartureBoxBase;
+import com.telecom.paris.maze.model.box.WallBoxBase;
 
 
 @DisplayName("FileMazePersistenceManager")
@@ -32,7 +30,6 @@ public class FileMazePersistenceManagerTest {
     private static MazeFactory factory;
 
     private static Path filesPath;
-    private static final String FILE_EXTENSION = ".maze";
 
     @BeforeAll
     public static void init() {
@@ -55,14 +52,14 @@ public class FileMazePersistenceManagerTest {
                 MazeModel maze = manager.doRead(filePath.toString());
 
 
-                assertEquals(maze.getHeigth(), expectedRowsColumns);
+                assertEquals(maze.getHeight(), expectedRowsColumns);
                 assertEquals(maze.getWidth(), expectedRowsColumns);
 
                 // Checking the type of some boxes
-                assertEquals(maze.getMazeBox(0, 0).getClass(), EmptyBox.class);
-                assertEquals(maze.getMazeBox(1, 0).getClass(), ArrivalBox.class);
-                assertEquals(maze.getMazeBox(2, 4).getClass(), WallBox.class);
-                assertEquals(maze.getMazeBox(8,0).getClass(), DepartureBox.class);
+                assertEquals(maze.getMazeBox(0, 0).getClass(), EmptyBoxBase.class);
+                assertEquals(maze.getMazeBox(1, 0).getClass(), ArrivalBoxBase.class);
+                assertEquals(maze.getMazeBox(2, 4).getClass(), WallBoxBase.class);
+                assertEquals(maze.getMazeBox(8,0).getClass(), DepartureBoxBase.class);
             });
         }
 
@@ -101,15 +98,6 @@ public class FileMazePersistenceManagerTest {
                 manager.doRead(filePath.toString());
             });
         }
-
-        @Test
-        public void doReadMismatchRowsColumnsNumber() {
-            Path filePath = FileMazePersistenceManagerTest.filesPath.resolve("labyrintheErreurNombreLignes.maze");
-
-            assertThrows(IOException.class, () -> {
-                manager.doRead(filePath.toString());
-            });
-        }
     }
 
     @Nested
@@ -135,22 +123,22 @@ public class FileMazePersistenceManagerTest {
             maze.changeBoxAtPosition(
                     departureBoxPosition[0],
                     departureBoxPosition[1],
-                    new DepartureBox(maze, departureBoxPosition[0], departureBoxPosition[1])
+                    new DepartureBoxBase(maze, departureBoxPosition[0], departureBoxPosition[1])
             );
             maze.changeBoxAtPosition(
                     arrivalBoxPosition[0],
                     arrivalBoxPosition[1],
-                    new ArrivalBox(maze, arrivalBoxPosition[0], arrivalBoxPosition[1])
+                    new ArrivalBoxBase(maze, arrivalBoxPosition[0], arrivalBoxPosition[1])
             );
             maze.changeBoxAtPosition(
                     wallBoxPosition[0],
                     wallBoxPosition[1],
-                    new WallBox(maze, wallBoxPosition[0], wallBoxPosition[1])
+                    new WallBoxBase(maze, wallBoxPosition[0], wallBoxPosition[1])
             );
             maze.changeBoxAtPosition(
                     wallBoxTwoPosition[0],
                     wallBoxTwoPosition[1],
-                    new WallBox(maze, wallBoxTwoPosition[0], wallBoxTwoPosition[1])
+                    new WallBoxBase(maze, wallBoxTwoPosition[0], wallBoxTwoPosition[1])
             );
 
             assertDoesNotThrow(() -> {

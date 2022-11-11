@@ -19,7 +19,7 @@ public class InformationMazeMenuItem extends JMenuItem implements ActionListener
 
 	@Override
 	public void actionPerformed(ActionEvent evt) {
-		int numberOfRows = mazeEditor.getMaze().getHeigth();
+		int numberOfRows = mazeEditor.getMaze().getHeight();
 		int numberOfColumns = mazeEditor.getMaze().getWidth();
 		String messageDimension = "This maze has dimension : "+Integer.toString(numberOfRows)+" x "+Integer.toString(numberOfColumns);
 		int numberOfBoxes = mazeEditor.getMaze().getNumberOfBoxes();

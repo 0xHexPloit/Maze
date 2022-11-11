@@ -1,6 +1,6 @@
 package com.telecom.paris.maze.ui;
 
-import com.telecom.paris.maze.model.MazeBoxModel;
+import com.telecom.paris.maze.model.box.MazeBoxModel;
 
 @SuppressWarnings("serial") 
 public class EmptyBoxButton extends AbstractBoxTypeRadioButton {

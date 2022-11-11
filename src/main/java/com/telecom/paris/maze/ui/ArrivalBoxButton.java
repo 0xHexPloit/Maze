@@ -1,6 +1,6 @@
 package com.telecom.paris.maze.ui;
 
-import com.telecom.paris.maze.model.MazeBoxModel;
+import com.telecom.paris.maze.model.box.MazeBoxModel;
 
 import java.awt.event.ActionListener;
 

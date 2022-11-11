@@ -1,6 +1,6 @@
 package com.telecom.paris.graph;
 
-import com.telecom.paris.maze.model.NotAdjacentVerticesException;
+import com.telecom.paris.maze.model.exceptions.NotAdjacentVerticesException;
 
 public interface Distance {
     /**

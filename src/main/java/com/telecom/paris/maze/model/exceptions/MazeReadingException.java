@@ -1,4 +1,4 @@
-package com.telecom.paris.maze.model;
+package com.telecom.paris.maze.model.exceptions;
 
 import java.io.IOException;
 

@@ -4,10 +4,12 @@ import com.telecom.paris.maze.model.box.*;
 import com.telecom.paris.graph.shortestpath.Dijkstra;
 import com.telecom.paris.graph.shortestpath.ShortestPaths;
 import com.telecom.paris.graph.Vertex;
+import com.telecom.paris.maze.model.exceptions.NotAdjacentVerticesException;
 
 import java.io.Serial;
 import java.util.*;
 import java.util.function.Predicate;
+import java.util.logging.Logger;
 
 public final class BaseMaze implements Maze {
     @Serial
@@ -15,18 +17,18 @@ public final class BaseMaze implements Maze {
 
     private final int height;
     private final int width;
-    private final MazeBox[][] tiles;
+    private final BaseMazeBox[][] tiles;
 
     private transient Set<ModelObserver> observers;
 
-    private ShortestPaths shortestPaths;
+    private transient ShortestPaths shortestPaths;
 
     private String id;
 
     public BaseMaze(int height, int width) {
         this.height = height;
         this.width = width;
-        this.tiles = new MazeBox[height][width];
+        this.tiles = new BaseMazeBox[height][width];
         this.observers = new HashSet<>();
         this.shortestPaths = null;
         this.id = "";
@@ -36,7 +38,7 @@ public final class BaseMaze implements Maze {
     private void fillTilesWithEmptyBoxes() {
         for (int rowIndex = 0; rowIndex < height; rowIndex++) {
             for (int colIndex = 0; colIndex < width; colIndex++) {
-                this.tiles[rowIndex][colIndex] = new EmptyBox(this, colIndex, rowIndex);
+                this.tiles[rowIndex][colIndex] = new EmptyBoxBase(this, colIndex, rowIndex);
             }
         }
         // Notify observers that the maze has changed.
@@ -51,38 +53,42 @@ public final class BaseMaze implements Maze {
 
     @Override
     public void setId(String mazeId) {
+        Logger.getGlobal().info(String.format("Setting maze id to %s", mazeId));
         this.id = mazeId;
     }
 
     @Override
     public Set<Vertex> getSuccessors(final Vertex vertex) {
+        // Check that vertex is not null
+        if (vertex == null) throw new IllegalArgumentException("Vertex cannot be null");
+
         Set<Vertex> vertices = new HashSet<>();
 
         // Checking if the box has no neighbours
         if (!(vertex instanceof AccessibleBox)) return vertices;
 
 
-        MazeBox box = (MazeBox) vertex;
-        int boxXPosition = box.getxPosition();
-        int boxYPosition = box.getyPosition();
+        BaseMazeBox box = (BaseMazeBox) vertex;
+        int boxXPosition = box.getHorizontalPosition();
+        int boxYPosition = box.getVerticalPosition();
 
         if (boxXPosition > 0) {
-            MazeBox neighbourBox = this.tiles[boxYPosition][boxXPosition - 1];
+            BaseMazeBox neighbourBox = this.tiles[boxYPosition][boxXPosition - 1];
             if (neighbourBox instanceof AccessibleBox) vertices.add(neighbourBox);
         }
 
         if (boxXPosition < width - 1) {
-            MazeBox neighbourBox = this.tiles[boxYPosition][boxXPosition + 1];
+            BaseMazeBox neighbourBox = this.tiles[boxYPosition][boxXPosition + 1];
             if (neighbourBox instanceof AccessibleBox) vertices.add(neighbourBox);
         }
 
         if (boxYPosition > 0) {
-            MazeBox neighbourBox = this.tiles[boxYPosition - 1][boxXPosition];
+            BaseMazeBox neighbourBox = this.tiles[boxYPosition - 1][boxXPosition];
             if (neighbourBox instanceof AccessibleBox) vertices.add(neighbourBox);
         }
 
         if (boxYPosition < height - 1) {
-            MazeBox neighbourBox = this.tiles[boxYPosition + 1][boxXPosition];
+            BaseMazeBox neighbourBox = this.tiles[boxYPosition + 1][boxXPosition];
             if (neighbourBox instanceof AccessibleBox) vertices.add(neighbourBox);
         }
 
@@ -90,16 +96,13 @@ public final class BaseMaze implements Maze {
     }
 
     @Override
-    public Vertex getVertex(String label) {
+    public Vertex getVertex(final String label) {
             Set<Vertex> vertices = this.getVertexes();
             for (Vertex vertex : vertices) {
                 if (vertex.getLabel().equals(label)) return vertex;
             }
             return null;
     }
-
-
-
 
     @Override
     public Set<Vertex> getVertexes() {
@@ -113,9 +116,16 @@ public final class BaseMaze implements Maze {
     }
 
     @Override
-    public void changeBoxAtPosition(int xPosition, int yPosition, final MazeBox box) {
+    public void changeBoxAtPosition(int xPosition, int yPosition, final BaseMazeBox box) {
             if (xPosition < 0 || xPosition >= width) throw new IllegalArgumentException("xPosition is out of bounds");
             if (yPosition < 0 || yPosition >= height) throw new IllegalArgumentException("yPosition is out of bounds");
+
+            Logger.getGlobal().info(String.format(
+                    "Changing box at position (%d, %d) to %s",
+                    xPosition,
+                    yPosition,
+                    box.getClass().getSimpleName()
+            ));
 
             this.tiles[yPosition][xPosition] = box;
             this.notifyObservers();
@@ -123,35 +133,29 @@ public final class BaseMaze implements Maze {
 
     @Override
     public int getEdgeWeight(final Vertex src, final Vertex dst) throws NotAdjacentVerticesException {
+        // Checking that src and dst are not null
+        if (src == null || dst == null) throw new IllegalArgumentException("src or dst is null");
+
         // Checking that both vertexes are accessible
         if (!(src instanceof AccessibleBox)) throw new NotAdjacentVerticesException(src, dst);
         if (!(dst instanceof AccessibleBox)) throw new NotAdjacentVerticesException(src, dst);
 
         // Checking that dst is a neighbour of src
-        MazeBox srcBox = (MazeBox) src;
-        MazeBox dstBox = (MazeBox) dst;
+        BaseMazeBox srcBox = (BaseMazeBox) src;
+        BaseMazeBox dstBox = (BaseMazeBox) dst;
 
-        int srcXPosition = srcBox.getxPosition();
-        int srcYPosition = srcBox.getyPosition();
-
-        int dstXPosition = dstBox.getxPosition();
-        int dstYPosition = dstBox.getyPosition();
-
-        // Checking that src and dst are neighbours.
-        if (Math.abs(srcXPosition - dstXPosition) > 1 || Math.abs(srcYPosition - dstYPosition) > 1) {
-            throw new NotAdjacentVerticesException(src, dst);
-        }
+        if (!srcBox.isNeighbourOf(dstBox)) throw new NotAdjacentVerticesException(src, dst);
 
         return 1;
     }
 
-    private int countingNumberBoxesVerifyingCondition(Predicate<MazeBox> condition) {
+    private int countNumberBoxesVerifyingCondition(final Predicate<BaseMazeBox> condition) {
         return Arrays.stream(this.tiles)
                 .mapToInt(row -> (int) Arrays.stream(row).filter(condition).count())
                 .sum();
     }
 
-    private MazeBox getFirstBoxVerifyingCondition(Predicate<MazeBox> condition) {
+    private BaseMazeBox getFirstBoxVerifyingCondition(final Predicate<BaseMazeBox> condition) {
         return Arrays.stream(this.tiles)
                 .flatMap(Arrays::stream)
                 .filter(condition)
@@ -166,17 +170,22 @@ public final class BaseMaze implements Maze {
         }
     }
 
-    public boolean doesMazeBoxBelongsToShortestPath(final MazeBox box) {
+    public boolean doesMazeBoxBelongsToShortestPath(final BaseMazeBox box) {
+        // Checking if the maze has been solved
         if (this.shortestPaths == null) return false;
 
-        MazeBox startBox = this.getFirstBoxVerifyingCondition(MazeBox::isDeparture);
-        MazeBox endBox = this.getFirstBoxVerifyingCondition(MazeBox::isArrival);
+        // Checking that the box is not null
+        if (box == null) throw new IllegalArgumentException("box cannot be null");
+
+        BaseMazeBox startBox = this.getFirstBoxVerifyingCondition(BaseMazeBox::isDeparture);
+        BaseMazeBox endBox = this.getFirstBoxVerifyingCondition(BaseMazeBox::isArrival);
 
         return this.shortestPaths.getShortestPathBetween(startBox, endBox).contains(box);
     }
 
     @Override
     public void setObservers(Set<ModelObserver> observers) {
+        if (observers == null) throw new IllegalArgumentException("observers cannot be null");
         this.observers = observers;
     }
 
@@ -188,11 +197,13 @@ public final class BaseMaze implements Maze {
 
     @Override
     public void addObserver(ModelObserver observer) {
+        if (observer == null) throw new IllegalArgumentException("observer cannot be null");
         this.observers.add(observer);
     }
 
     @Override
     public boolean removeObserver(ModelObserver observer) {
+        if (observer == null) throw new IllegalArgumentException("observer cannot be null");
         return this.observers.remove(observer);
     }
 
@@ -202,12 +213,15 @@ public final class BaseMaze implements Maze {
     }
 
     @Override
-    public int getHeigth() {
+    public int getHeight() {
         return this.height;
     }
 
     @Override
     public MazeBoxModel getMazeBox(int rowIndex, int colIndex) {
+        if (rowIndex < 0 || rowIndex >= this.height) throw new IllegalArgumentException("rowIndex is out of bounds");
+        if (colIndex < 0 || colIndex >= this.width) throw new IllegalArgumentException("colIndex is out of bounds");
+
         return this.tiles[rowIndex][colIndex];
     }
 
@@ -218,20 +232,23 @@ public final class BaseMaze implements Maze {
 
     @Override
     public void clearMaze() {
+        Logger.getGlobal().info("Clearing maze");
         this.fillTilesWithEmptyBoxes();
         this.notifyObservers();
     }
 
     @Override
     public void clearShortestPath() {
+        Logger.getGlobal().info("Clearing shortest path");
         this.shortestPaths = null;
         this.notifyObservers();
     }
 
     @Override
     public boolean solve() {
-        MazeBox startBox = this.getFirstBoxVerifyingCondition(box -> box instanceof DepartureBox);
-        MazeBox endBox = this.getFirstBoxVerifyingCondition(box -> box instanceof ArrivalBox);
+        Logger.getGlobal().info("Solving maze");
+        BaseMazeBox startBox = this.getFirstBoxVerifyingCondition(box -> box instanceof DepartureBoxBase);
+        BaseMazeBox endBox = this.getFirstBoxVerifyingCondition(box -> box instanceof ArrivalBoxBase);
 
         this.shortestPaths = Dijkstra.dijkstra(
                 this,
@@ -247,13 +264,13 @@ public final class BaseMaze implements Maze {
     public List<String> validate() {
         List<String> errors = new ArrayList<>();
 
-        // Getting the number of departure boxes
-        int numberOfDepartureBoxes = this.countingNumberBoxesVerifyingCondition(MazeBox::isDeparture);
+        // Checking that the maze contains only one start box
+        int numberOfDepartureBoxes = this.countNumberBoxesVerifyingCondition(BaseMazeBox::isDeparture);
 
         if (numberOfDepartureBoxes != 1) errors.add("The number of departure boxes is not equal to 1\n");
 
-        // Getting the number of arrival boxes
-        int numberOfArrivalBoxes = this.countingNumberBoxesVerifyingCondition(MazeBox::isArrival);
+        // Checking that the maze contains only one arrival box
+        int numberOfArrivalBoxes = this.countNumberBoxesVerifyingCondition(BaseMazeBox::isArrival);
 
         if (numberOfArrivalBoxes != 1) errors.add("The number of arrival boxes is not equal to 1\n");
 

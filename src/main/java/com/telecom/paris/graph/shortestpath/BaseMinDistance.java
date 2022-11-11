@@ -22,7 +22,7 @@ public final class BaseMinDistance implements MinDistance {
     @Override
     public Vertex getMinDistanceVertex(final ProcessedVertexesSet processedVertexesSet,final Set<Vertex> vertexes) {
         // First of all, we should sort the vertexes by their distance to the start vertex
-        List<Vertex> sortedVertexes = this.minDistances
+        final List<Vertex> sortedVertexes = this.minDistances
                 .entrySet()
                 .stream()
                 .sorted(Map.Entry.comparingByValue())
