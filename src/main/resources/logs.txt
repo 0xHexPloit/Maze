@@ -2,9 +2,9 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2022-11-11T14:19:23.592356Z</date>
-  <millis>1668176363592</millis>
-  <nanos>356000</nanos>
+  <date>2022-11-11T21:47:52.896011Z</date>
+  <millis>1668203272896</millis>
+  <nanos>11000</nanos>
   <sequence>1</sequence>
   <logger>global</logger>
   <level>INFO</level>
@@ -14,171 +14,15 @@
   <message>Creating a new maze of size 10x10</message>
 </record>
 <record>
-  <date>2022-11-11T14:19:25.963658Z</date>
-  <millis>1668176365963</millis>
-  <nanos>658000</nanos>
+  <date>2022-11-11T21:48:07.163671Z</date>
+  <millis>1668203287163</millis>
+  <nanos>671000</nanos>
   <sequence>2</sequence>
   <logger>global</logger>
   <level>INFO</level>
-  <class>com.telecom.paris.maze.model.BaseMaze</class>
-  <method>changeBoxAtPosition</method>
-  <thread>27</thread>
-  <message>Changing box at position (1, 0) to DepartureBoxBase</message>
-</record>
-<record>
-  <date>2022-11-11T14:19:27.682520Z</date>
-  <millis>1668176367682</millis>
-  <nanos>520000</nanos>
-  <sequence>3</sequence>
-  <logger>global</logger>
-  <level>INFO</level>
-  <class>com.telecom.paris.maze.model.BaseMaze</class>
-  <method>changeBoxAtPosition</method>
-  <thread>27</thread>
-  <message>Changing box at position (8, 7) to ArrivalBoxBase</message>
-</record>
-<record>
-  <date>2022-11-11T14:19:29.746009Z</date>
-  <millis>1668176369746</millis>
-  <nanos>9000</nanos>
-  <sequence>4</sequence>
-  <logger>global</logger>
-  <level>INFO</level>
-  <class>com.telecom.paris.maze.model.BaseMaze</class>
-  <method>changeBoxAtPosition</method>
-  <thread>27</thread>
-  <message>Changing box at position (9, 5) to WallBoxBase</message>
-</record>
-<record>
-  <date>2022-11-11T14:19:30.147524Z</date>
-  <millis>1668176370147</millis>
-  <nanos>524000</nanos>
-  <sequence>5</sequence>
-  <logger>global</logger>
-  <level>INFO</level>
-  <class>com.telecom.paris.maze.model.BaseMaze</class>
-  <method>changeBoxAtPosition</method>
-  <thread>27</thread>
-  <message>Changing box at position (8, 5) to WallBoxBase</message>
-</record>
-<record>
-  <date>2022-11-11T14:19:30.559127Z</date>
-  <millis>1668176370559</millis>
-  <nanos>127000</nanos>
-  <sequence>6</sequence>
-  <logger>global</logger>
-  <level>INFO</level>
-  <class>com.telecom.paris.maze.model.BaseMaze</class>
-  <method>changeBoxAtPosition</method>
-  <thread>27</thread>
-  <message>Changing box at position (7, 5) to WallBoxBase</message>
-</record>
-<record>
-  <date>2022-11-11T14:19:31.072811Z</date>
-  <millis>1668176371072</millis>
-  <nanos>811000</nanos>
-  <sequence>7</sequence>
-  <logger>global</logger>
-  <level>INFO</level>
-  <class>com.telecom.paris.maze.model.BaseMaze</class>
-  <method>changeBoxAtPosition</method>
-  <thread>27</thread>
-  <message>Changing box at position (7, 6) to WallBoxBase</message>
-</record>
-<record>
-  <date>2022-11-11T14:19:31.503609Z</date>
-  <millis>1668176371503</millis>
-  <nanos>609000</nanos>
-  <sequence>8</sequence>
-  <logger>global</logger>
-  <level>INFO</level>
-  <class>com.telecom.paris.maze.model.BaseMaze</class>
-  <method>changeBoxAtPosition</method>
-  <thread>27</thread>
-  <message>Changing box at position (7, 7) to WallBoxBase</message>
-</record>
-<record>
-  <date>2022-11-11T14:19:32.126043Z</date>
-  <millis>1668176372126</millis>
-  <nanos>43000</nanos>
-  <sequence>9</sequence>
-  <logger>global</logger>
-  <level>INFO</level>
-  <class>com.telecom.paris.maze.model.BaseMaze</class>
-  <method>changeBoxAtPosition</method>
-  <thread>27</thread>
-  <message>Changing box at position (7, 8) to WallBoxBase</message>
-</record>
-<record>
-  <date>2022-11-11T14:19:32.716905Z</date>
-  <millis>1668176372716</millis>
-  <nanos>905000</nanos>
-  <sequence>10</sequence>
-  <logger>global</logger>
-  <level>INFO</level>
-  <class>com.telecom.paris.maze.model.BaseMaze</class>
-  <method>changeBoxAtPosition</method>
-  <thread>27</thread>
-  <message>Changing box at position (9, 8) to WallBoxBase</message>
-</record>
-<record>
-  <date>2022-11-11T14:19:34.223080Z</date>
-  <millis>1668176374223</millis>
-  <nanos>80000</nanos>
-  <sequence>11</sequence>
-  <logger>global</logger>
-  <level>INFO</level>
-  <class>com.telecom.paris.maze.model.BaseMaze</class>
-  <method>solve</method>
-  <thread>27</thread>
-  <message>Solving maze</message>
-</record>
-<record>
-  <date>2022-11-11T14:19:44.984235Z</date>
-  <millis>1668176384984</millis>
-  <nanos>235000</nanos>
-  <sequence>12</sequence>
-  <logger>global</logger>
-  <level>INFO</level>
-  <class>com.telecom.paris.maze.model.BaseMaze</class>
-  <method>setId</method>
-  <thread>27</thread>
-  <message>Setting maze id to /Users/hugopeyron/Desktop/Maze.maze</message>
-</record>
-<record>
-  <date>2022-11-11T14:19:53.698203Z</date>
-  <millis>1668176393698</millis>
-  <nanos>203000</nanos>
-  <sequence>13</sequence>
-  <logger>global</logger>
-  <level>INFO</level>
-  <class>com.telecom.paris.maze.model.BaseMaze</class>
-  <method>setId</method>
-  <thread>27</thread>
-  <message>Setting maze id to null</message>
-</record>
-<record>
-  <date>2022-11-11T14:20:00.378546Z</date>
-  <millis>1668176400378</millis>
-  <nanos>546000</nanos>
-  <sequence>14</sequence>
-  <logger>global</logger>
-  <level>INFO</level>
-  <class>com.telecom.paris.maze.model.BaseMaze</class>
-  <method>setId</method>
-  <thread>27</thread>
-  <message>Setting maze id to /Users/hugopeyron/Desktop/Maze.maze</message>
-</record>
-<record>
-  <date>2022-11-11T14:20:09.252468Z</date>
-  <millis>1668176409252</millis>
-  <nanos>468000</nanos>
-  <sequence>15</sequence>
-  <logger>global</logger>
-  <level>INFO</level>
-  <class>com.telecom.paris.maze.model.BaseMaze</class>
-  <method>clearMaze</method>
-  <thread>27</thread>
-  <message>Clearing maze</message>
+  <class>com.telecom.paris.maze.ui.FileMazePersistenceManager</class>
+  <method>read</method>
+  <thread>29</thread>
+  <message>Reading maze from file /Users/hugopeyron/Programming/Telecom/Java/Maze/data/labyrintheDepartMultiples.maze</message>
 </record>
 </log>

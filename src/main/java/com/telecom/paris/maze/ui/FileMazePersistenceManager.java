@@ -73,13 +73,12 @@ public class FileMazePersistenceManager implements MazePersistenceManager {
 			}
 		}
 
+		Logger.getGlobal().info(String.format("Reading maze from file %s", mazeId));
 		return doRead(mazeId);
 	}
 
 	protected MazeModel doRead(final String mazeId)
 			throws IOException {
-		Logger.getGlobal().info(String.format("Reading maze from file %s", mazeId));
-
 		try {
 			final Path path = Paths.get(mazeId);
 			final List<String> lines = Files.readAllLines(path);
@@ -167,13 +166,12 @@ public class FileMazePersistenceManager implements MazePersistenceManager {
 			mazeModel.setId( mazeId );
 		}
 
+		Logger.getGlobal().info(String.format("Saving maze to file %s", mazeModel.getId()));
 		doPersist( mazeModel );
 	}
 
 	protected void doPersist( final MazeModel mazeModel )
 	throws IOException {
-		Logger.getGlobal().info(String.format("Saving maze to file %s", mazeModel.getId()));
-
 		// Define the path where the file will be saved
 		final Path path = Paths.get(mazeModel.getId());
 

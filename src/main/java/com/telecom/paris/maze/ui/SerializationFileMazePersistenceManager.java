@@ -7,27 +7,27 @@ import java.util.Set;
 import com.telecom.paris.maze.model.MazeModel;
 import com.telecom.paris.maze.model.ModelObserver;
 
-public class SerializationFileMazePersistenceManager extends FileMazePersistenceManager {
+public final class SerializationFileMazePersistenceManager extends FileMazePersistenceManager {
     @Override
     protected MazeModel doRead(String mazeId) throws IOException {
         try (
-            FileInputStream fis = new FileInputStream(mazeId);
-            ObjectInputStream ois = new ObjectInputStream(fis);
+            final FileInputStream fis = new FileInputStream(mazeId);
+            final ObjectInputStream ois = new ObjectInputStream(fis)
         ) {
             MazeModel model = (MazeModel) ois.readObject();
             Set<ModelObserver> observers = new HashSet<>();
             model.setObservers(observers);
             return model;
-        } catch (FileNotFoundException | ClassNotFoundException e) {
-            throw new IOException(e);
+        } catch (ClassNotFoundException | IOException e) {
+            throw new IOException("Unable to deserialize the maze. Error: " + e.getMessage());
         }
     }
 
     @Override
     protected void doPersist(MazeModel mazeModel) throws IOException {
         try (
-            FileOutputStream fis = new FileOutputStream(mazeModel.getId());
-            ObjectOutputStream oos = new ObjectOutputStream(fis);
+            final FileOutputStream fis = new FileOutputStream(mazeModel.getId());
+            final ObjectOutputStream oos = new ObjectOutputStream(fis)
         ) {
             oos.writeObject(mazeModel);
         } catch (FileNotFoundException e) {
