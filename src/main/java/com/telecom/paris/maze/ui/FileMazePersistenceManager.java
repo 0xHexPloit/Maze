@@ -2,11 +2,13 @@ package com.telecom.paris.maze.ui;
 
 import java.awt.Component;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Scanner;
+import java.util.Set;
 import java.util.logging.Logger;
 
 import javax.swing.JFileChooser;
@@ -80,8 +82,17 @@ public class FileMazePersistenceManager implements MazePersistenceManager {
 	protected MazeModel doRead(final String mazeId)
 			throws IOException {
 		try {
-			final Path path = Paths.get(mazeId);
-			final List<String> lines = Files.readAllLines(path);
+			final List<String> lines = new ArrayList<String>();
+			
+			try (
+					final FileReader fr = new FileReader(mazeId);
+					final BufferedReader br = new BufferedReader(fr);
+					final Scanner scanner = new Scanner(br);
+			) {
+				while (scanner.hasNextLine()) {
+					lines.add(scanner.nextLine());
+				}
+			}	
 
 			final int numberRows = lines.size();
 
@@ -89,7 +100,11 @@ public class FileMazePersistenceManager implements MazePersistenceManager {
 			if (numberRows == 0) throw new MazeReadingException("The file is empty", mazeId, 0);
 
 			// Then we need to check that all the lines have the same number of characters
-			final int numberDistinctColumns = (int) lines.stream().mapToInt(String::length).distinct().count();
+			final Set<Integer> numberColumnsInFile = new HashSet<Integer>();
+			for (String line: lines) {
+				numberColumnsInFile.add(line.length());
+			}
+			final int numberDistinctColumns = numberColumnsInFile.size();
 			if (numberDistinctColumns != 1) throw new MazeReadingException(
 					"The number of columns is not the same for all the lines",
 					mazeId,
@@ -112,34 +127,32 @@ public class FileMazePersistenceManager implements MazePersistenceManager {
 
 				for (int columnIndex = 0; columnIndex < columnsArr.length; columnIndex++) {
 					final char column = columnsArr[columnIndex];
-					switch (column) {
-						case BOX_DEPARTURE -> {
-							maze.changeBoxAtPosition(
-									columnIndex,
-									rowIndex,
-									new DepartureBox(maze, columnIndex, rowIndex)
-							);
-						}
-						case BOX_ARRIVAL -> {
-							maze.changeBoxAtPosition(
-									columnIndex,
-									rowIndex,
-									new ArrivalBox(maze, columnIndex, rowIndex)
-							);
-						}
-						case BOX_EMPTY -> {
-						} // Nothing to do, maze is by default filled with empty boxes.
-						case BOX_WALL -> maze.changeBoxAtPosition(
+					if (column == BOX_DEPARTURE) {
+						maze.changeBoxAtPosition(
+								columnIndex,
+								rowIndex,
+								new DepartureBox(maze, columnIndex, rowIndex)
+						);
+					} else if (column == BOX_ARRIVAL) {
+						maze.changeBoxAtPosition(
+								columnIndex,
+								rowIndex,
+								new ArrivalBox(maze, columnIndex, rowIndex)
+						);
+					} else if (column == BOX_EMPTY) {
+						// Nothing to do
+					} else if (column == BOX_WALL) {
+						maze.changeBoxAtPosition(
 								columnIndex,
 								rowIndex,
 								new WallBox(maze, columnIndex, rowIndex)
 						);
-						default -> throw new MazeReadingException(
+					} else  {
+						throw new MazeReadingException(
 								String.format("Invalid symbol: %s", column),
 								mazeId,
 								rowIndex
 						);
-
 					}
 				}
 			}
@@ -176,7 +189,7 @@ public class FileMazePersistenceManager implements MazePersistenceManager {
 		final Path path = Paths.get(mazeModel.getId());
 
 		try (
-				final FileWriter writer = new FileWriter(path.toFile(), StandardCharsets.UTF_8);
+				final FileWriter writer = new FileWriter(path.toFile());
 				final BufferedWriter buffWriter = new BufferedWriter(writer);
 				final PrintWriter printWriter = new PrintWriter(buffWriter);
 		) {

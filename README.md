@@ -42,6 +42,20 @@ I/O tests are available in the `test` folder. To run them, you will have to run 
 mvn test
 ```
 
+### Hacking 
+
+This repository contains also a branch named `hacking`. The latter contains a modified version of the project that permits to run the program with an old version of the JRE (`version 1.7`). This allowed us to discover a deserialization vulnerability using the `Apache Commons Collections (version 3.2.2)` framework. As we can see below, we managed to open
+a JOptionPane saying that we hacked the Maze Program.
+
+
+![javaExploit](./img/java_exploit.png)
+
+In case you would like to execute an external program instead of displaying a message to the user, execute the following
+steps:
+ - Open the `HackedSerializedDataGenerator.java` located inside the `com.telecom.paris.hacking` package.
+ - Uncomment the transformation chain that permits to call an external program.
+ - Execute this file as a Java Application (the program expects a command line argument: the path towards the external program).
+
 ### Remarks
 The UI part of the application was not implemented by myself but by another student of Telecom Paris.
 

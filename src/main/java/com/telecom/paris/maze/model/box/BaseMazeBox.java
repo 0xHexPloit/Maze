@@ -1,13 +1,11 @@
 package com.telecom.paris.maze.model.box;
 
-import java.io.Serial;
 import java.util.Set;
 
 import com.telecom.paris.maze.model.Maze;
 import com.telecom.paris.graph.Vertex;
 
 public abstract class BaseMazeBox implements MazeBox  {
-    @Serial
     private static final long serialVersionUID = 202211101416L;
 
     private final Maze maze;

@@ -1,8 +1,7 @@
 package com.telecom.paris.maze.model;
 
-import java.io.Serial;
+
 import java.util.*;
-import java.util.function.Predicate;
 import java.util.logging.Logger;
 
 import com.telecom.paris.maze.model.box.*;
@@ -12,7 +11,6 @@ import com.telecom.paris.graph.Vertex;
 import com.telecom.paris.maze.model.exceptions.NotAdjacentVerticesException;
 
 public final class BaseMaze implements Maze {
-    @Serial
     private static final long serialVersionUID = 202211101416L;
 
     private final int height;
@@ -145,21 +143,6 @@ public final class BaseMaze implements Maze {
         return 1;
     }
 
-    private int countNumberBoxesVerifyingCondition(final Predicate<BaseMazeBox> condition) {
-        return Arrays.stream(this.tiles)
-                .mapToInt(row -> (int) Arrays.stream(row).filter(condition).count())
-                .sum();
-    }
-
-    private BaseMazeBox getFirstBoxVerifyingCondition(final Predicate<BaseMazeBox> condition) {
-        return Arrays.stream(this.tiles)
-                .flatMap(Arrays::stream)
-                .filter(condition)
-                .findFirst()
-                .orElse(null);
-    }
-
-
     private void notifyObservers() {
         for (ModelObserver observer : observers) {
             observer.modelStateChanged();
@@ -174,8 +157,17 @@ public final class BaseMaze implements Maze {
         // Checking that the box is not null
         if (box == null) throw new IllegalArgumentException("box cannot be null");
 
-        BaseMazeBox startBox = this.getFirstBoxVerifyingCondition(BaseMazeBox::isDeparture);
-        BaseMazeBox endBox = this.getFirstBoxVerifyingCondition(BaseMazeBox::isArrival);
+        BaseMazeBox startBox = null;
+        BaseMazeBox endBox = null;
+        
+        for (int i = 0; i < this.height; i++) {
+        	for (int j = 0; j < this.width; j++) {
+        		final BaseMazeBox currentBox = this.tiles[i][j];
+        		if( currentBox.isDeparture()) startBox = currentBox;
+        		else if (currentBox.isArrival()) endBox = currentBox;
+        	}
+        }
+       
 
         return this.shortestPaths.getShortestPathBetween(startBox, endBox).contains(box);
     }
@@ -244,8 +236,16 @@ public final class BaseMaze implements Maze {
     @Override
     public boolean solve() {
         Logger.getGlobal().info("Solving maze");
-        BaseMazeBox startBox = this.getFirstBoxVerifyingCondition(box -> box instanceof DepartureBox);
-        BaseMazeBox endBox = this.getFirstBoxVerifyingCondition(box -> box instanceof ArrivalBox);
+        BaseMazeBox startBox = null;
+        BaseMazeBox endBox = null;
+        
+        for (int i = 0; i < this.height; i++) {
+        	for (int j = 0; j < this.width; j++) {
+        		final BaseMazeBox currentBox = this.tiles[i][j];
+        		if( currentBox.isDeparture()) startBox = currentBox;
+        		else if (currentBox.isArrival()) endBox = currentBox;
+        	}
+        }
 
         this.shortestPaths = Dijkstra.dijkstra(
                 this,
@@ -262,12 +262,27 @@ public final class BaseMaze implements Maze {
         List<String> errors = new ArrayList<>();
 
         // Checking that the maze contains only one start box
-        int numberOfDepartureBoxes = this.countNumberBoxesVerifyingCondition(BaseMazeBox::isDeparture);
+        int numberOfDepartureBoxes = 0;
+        
+        
+        for (int i = 0; i < this.height; i++) {
+        	for (int j = 0; j < this.width; j++) {
+        		BaseMazeBox currentBox = this.tiles[i][j];
+        		if( currentBox.isDeparture()) numberOfDepartureBoxes++;
+        	}
+        }
+        
 
         if (numberOfDepartureBoxes != 1) errors.add("The number of departure boxes is not equal to 1\n");
 
         // Checking that the maze contains only one arrival box
-        int numberOfArrivalBoxes = this.countNumberBoxesVerifyingCondition(BaseMazeBox::isArrival);
+        int numberOfArrivalBoxes = 0;
+        for (int i = 0; i < this.height; i++) {
+        	for (int j = 0; j < this.width; j++) {
+        		final BaseMazeBox currentBox = this.tiles[i][j];
+        		if( currentBox.isArrival()) numberOfArrivalBoxes++;
+        	}
+        }
 
         if (numberOfArrivalBoxes != 1) errors.add("The number of arrival boxes is not equal to 1\n");
 
